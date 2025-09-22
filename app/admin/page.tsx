@@ -40,7 +40,7 @@ export default function AdminPage() {
               </td>
               <td>
                 <a
-                  href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/invitations/${g.id}`}
+                  href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/confirm/${g.id}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
