@@ -24,6 +24,7 @@ export default function AdminPage() {
             <th>Jumlah Dikonfirmasi</th>
             <th>Status</th>
             <th>Waktu Datang</th>
+            <th>Link Invitations</th>
           </tr>
         </thead>
         <tbody>
@@ -36,6 +37,15 @@ export default function AdminPage() {
                 {g.arrivalTime
                   ? new Date(g.arrivalTime).toLocaleTimeString()
                   : "-"}
+              </td>
+              <td>
+                <a
+                  href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/invitations/${g._id}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Link
+                </a>
               </td>
             </tr>
           ))}
