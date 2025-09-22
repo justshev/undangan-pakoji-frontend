@@ -29,7 +29,7 @@ export default function AdminPage() {
         </thead>
         <tbody>
           {guests.map((g: any) => (
-            <tr key={g._id} className="border">
+            <tr key={g.id} className="border">
               <td>{g.name}</td>
               <td>{g.confirmedGuests}</td>
               <td>{g.isArrived ? "Hadir" : "Belum Hadir"}</td>
@@ -40,7 +40,7 @@ export default function AdminPage() {
               </td>
               <td>
                 <a
-                  href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/invitations/${g._id}`}
+                  href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/invitations/${g.id}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
