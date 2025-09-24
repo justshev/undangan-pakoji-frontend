@@ -8,13 +8,13 @@ import {
 } from "next/navigation";
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 export default function ConfirmPage() {
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState<null | number>(null);
   const router = useRouter();
-  const params = useParams(); // path params
-  const qs = useSearchParams(); // query string
-  const pathname = usePathname(); // debug
+  const params = useParams();
+  const qs = useSearchParams();
+  const pathname = usePathname();
   const guestIdFromPath = (params?.guestId ?? params?.id) as string | undefined;
-  const guestId = guestIdFromPath ?? (qs.get("guestId") || undefined); // fallback jika ada rewrite
+  const guestId = guestIdFromPath ?? (qs.get("guestId") || undefined);
 
   useEffect(() => {
     console.log({
@@ -50,7 +50,7 @@ export default function ConfirmPage() {
       <input
         type="number"
         min={1}
-        value={count}
+        value={count ? count : ""}
         onChange={(e) => setCount(parseInt(e.target.value))}
         className="border p-2 mt-4"
       />

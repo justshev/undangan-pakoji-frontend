@@ -5,6 +5,7 @@ import { useState } from "react";
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 const PASSCODE = process.env.NEXT_PUBLIC_QR_PASSCODE || "1234";
+
 export default function QRCodePage() {
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
@@ -14,6 +15,7 @@ export default function QRCodePage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
     if (input === PASSCODE) {
       setAuthorized(true);
       setError(null);
