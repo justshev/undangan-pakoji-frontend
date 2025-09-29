@@ -3,15 +3,8 @@
 import type React from "react";
 
 import { useState, useEffect, useRef } from "react";
-import {
-  Calendar,
-  MapPin,
-  Clock,
-  Users,
-  Gift,
-  Quote,
-  Heart,
-} from "lucide-react";
+import { Calendar, MapPin, Clock, Users, Gift, Quote } from "lucide-react";
+import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import AnimatedDiv from "./components/AnimatedDiv";
@@ -75,20 +68,7 @@ export default function JavaneseWeddingInvitation() {
     }
   };
 
-  const handleTogglePlay = async () => {
-    if (!audioElementRef.current) return;
-    if (isAudioPlaying) {
-      audioElementRef.current.pause();
-      setIsAudioPlaying(false);
-    } else {
-      try {
-        await audioElementRef.current.play();
-        setIsAudioPlaying(true);
-      } catch {
-        setIsAudioPlaying(false);
-      }
-    }
-  };
+  // Removed unused handleTogglePlay to satisfy linter.
 
   const handleToggleMute = () => {
     if (!audioElementRef.current) return;
@@ -177,15 +157,15 @@ export default function JavaneseWeddingInvitation() {
                     <div className="p-8 text-center">
                       <Quote className="w-12 h-12 text-secondary mx-auto mb-6" />
                       <p className="text-lg text-primary font-medium mb-4 leading-relaxed">
-                        "وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ
-                        أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم
-                        مَّوَدَّةً وَرَحْمَةً"
+                        &ldquo;وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ
+                        أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ
+                        بَيْنَكُم مَّوَدَّةً وَرَحْمَةً&rdquo;
                       </p>
                       <p className="text-muted-foreground mb-4 leading-relaxed">
-                        "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia
+                        &ldquo;Dan di antara tanda-tanda kekuasaan-Nya ialah Dia
                         menciptakan untukmu isteri-isteri dari jenismu sendiri,
                         supaya kamu cenderung dan merasa tenteram kepadanya, dan
-                        dijadikan-Nya diantaramu rasa kasih dan sayang."
+                        dijadikan-Nya diantaramu rasa kasih dan sayang.&rdquo;
                       </p>
                       <p className="text-sm font-medium text-secondary">
                         QS. Ar-Rum: 21
@@ -197,13 +177,14 @@ export default function JavaneseWeddingInvitation() {
                     <div className="p-8 text-center">
                       <Quote className="w-12 h-12 text-secondary mx-auto mb-6" />
                       <p className="text-lg text-primary font-medium mb-4 leading-relaxed">
-                        "وَاللَّهُ جَعَلَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا
-                        وَجَعَلَ لَكُم مِّنْ أَزْوَاجِكُم بَنِينَ وَحَفَدَةً"
+                        &ldquo;وَاللَّهُ جَعَلَ لَكُم مِّنْ أَنفُسِكُمْ
+                        أَزْوَاجًا وَجَعَلَ لَكُم مِّنْ أَزْوَاجِكُم بَنِينَ
+                        وَحَفَدَةً&rdquo;
                       </p>
                       <p className="text-muted-foreground mb-4 leading-relaxed">
-                        "Allah menjadikan bagi kamu isteri-isteri dari jenis
-                        kamu sendiri dan menjadikan bagimu dari isteri-isteri
-                        kamu itu, anak-anak dan cucu-cucu."
+                        &ldquo;Allah menjadikan bagi kamu isteri-isteri dari
+                        jenis kamu sendiri dan menjadikan bagimu dari
+                        isteri-isteri kamu itu, anak-anak dan cucu-cucu.&rdquo;
                       </p>
                       <p className="text-sm font-medium text-secondary">
                         QS. An-Nahl: 72
@@ -273,22 +254,32 @@ export default function JavaneseWeddingInvitation() {
                 <div className="max-w-4xl mx-auto">
                   <AnimatedDiv className="grid md:grid-cols-3 gap-6 mb-12">
                     {/* Tempatkan src fotomu di bawah ini */}
-                    <div className="aspect-square bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg overflow-hidden">
-                      <img
+                    <div className="aspect-square bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg overflow-hidden relative">
+                      <Image
+                        src="/images/cover-photo.jpg"
                         alt="Pertemuan Pertama"
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 shadow"
+                        fill
+                        className="object-cover hover:scale-105 transition-transform duration-300 shadow"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        priority
                       />
                     </div>
-                    <div className="aspect-square bg-gradient-to-br from-secondary/20 to-primary/20 rounded-lg overflow-hidden">
-                      <img
+                    <div className="aspect-square bg-gradient-to-br from-secondary/20 to-primary/20 rounded-lg overflow-hidden relative">
+                      <Image
+                        src="/images/cover-photo-1.JPG"
                         alt="Lamaran"
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        fill
+                        className="object-cover hover:scale-105 transition-transform duration-300"
+                        sizes="(max-width: 768px) 100vw, 33vw"
                       />
                     </div>
-                    <div className="aspect-square bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg overflow-hidden">
-                      <img
+                    <div className="aspect-square bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg overflow-hidden relative">
+                      <Image
+                        src="/images/cover-photo.jpg"
                         alt="Prewedding"
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        fill
+                        className="object-cover hover:scale-105 transition-transform duration-300"
+                        sizes="(max-width: 768px) 100vw, 33vw"
                       />
                     </div>
                   </AnimatedDiv>
@@ -446,17 +437,28 @@ export default function JavaneseWeddingInvitation() {
                 </AnimatedDiv>
 
                 <AnimatedDiv className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
-                  {Array.from({ length: 12 }).map((_, index) => (
-                    <div
-                      key={index}
-                      className="aspect-square bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg overflow-hidden group"
-                    >
-                      <img
-                        alt={`Gallery ${index + 1}`}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 cursor-pointer"
-                      />
-                    </div>
-                  ))}
+                  {Array.from({ length: 12 }).map((_, index) => {
+                    const imagePool = [
+                      "/images/cover-photo.jpg",
+                      "/images/cover-photo-1.JPG",
+                      "/images/gunungan.webp",
+                    ];
+                    const src = imagePool[index % imagePool.length];
+                    return (
+                      <div
+                        key={index}
+                        className="aspect-square bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg overflow-hidden group relative"
+                      >
+                        <Image
+                          src={src}
+                          alt={`Gallery ${index + 1}`}
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-300 cursor-pointer"
+                          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                        />
+                      </div>
+                    );
+                  })}
                 </AnimatedDiv>
               </div>
             </section>
@@ -530,11 +532,15 @@ export default function JavaneseWeddingInvitation() {
             <footer className="py-12 bg-primary text-primary-foreground">
               <div className="container mx-auto px-4 text-center">
                 <div className="mb-6">
-                  <img
-                    src="/images/gunungan.webp"
-                    alt="Gunungan Wayang"
-                    className="w-16 h-auto mx-auto opacity-80"
-                  />
+                  <div className="w-16 h-16 relative mx-auto opacity-80">
+                    <Image
+                      src="/images/gunungan.webp"
+                      alt="Gunungan Wayang"
+                      fill
+                      className="object-contain"
+                      sizes="64px"
+                    />
+                  </div>
                 </div>
 
                 <h3 className="font-heading text-2xl font-bold mb-4">
@@ -542,10 +548,10 @@ export default function JavaneseWeddingInvitation() {
                 </h3>
 
                 <p className="text-primary-foreground/80 mb-6 max-w-2xl mx-auto">
-                  "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan
-                  untukmu isteri-isteri dari jenismu sendiri, supaya kamu
-                  cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya
-                  diantaramu rasa kasih dan sayang."
+                  &ldquo;Dan di antara tanda-tanda kekuasaan-Nya ialah Dia
+                  menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya
+                  kamu cenderung dan merasa tenteram kepadanya, dan
+                  dijadikan-Nya diantaramu rasa kasih dan sayang.&rdquo;
                 </p>
 
                 <p className="text-sm text-primary-foreground/60 mb-8">
