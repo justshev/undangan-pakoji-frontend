@@ -12,8 +12,7 @@ import {
   Quote,
   Heart,
 } from "lucide-react";
-import { notFound, useParams, useRouter } from "next/navigation";
-import photo from "../../../public/images/photo_name.jpg";
+import { useParams, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import AnimatedDiv from "./components/AnimatedDiv";
 import CoverUndangan from "./components/CoverUndangan";
@@ -136,30 +135,38 @@ export default function JavaneseWeddingInvitation() {
           </div>
 
           <div className="min-h-screen bg-background overflow-hidden">
-            <section className="relative w-screen h-screen bg-[url('/images/photo_name.jpg')] bg-cover bg-center font-title">
-              <div className="absolute inset-0 bg-black/40"></div>
+            <section className="relative w-screen h-screen bg-[url('/images/cover-photo.jpg')] bg-cover bg-[50%_60%] font-title">
+              <div className="absolutes inset-0 bg-black/40"></div>
 
-              <motion.div className="absolute bottom-6 left-6 z-10 text-white text-center text-xs">
-                <h1>Fadhil Rozi Hendrawan, S.Kom., M.Kom.</h1>
-                <p>Anak Pertama Dari</p>
+              <motion.div className="absolute bottom-6 left-6 z-10 text-white text-right text-xs font-semibold">
+                <h1 className="text-lg text-amber-400">
+                  Fadhil Rozi Hendrawan, S.Kom., M.Kom.
+                </h1>
+                <p>Anak Ke-1 Dari 3 Bersaudara</p>
                 <p>Bapak H. Toni Surizi, S.T</p>
                 <p>dan</p>
                 <p>Ibu Hj. Hefnasari Pane, S.E</p>
               </motion.div>
 
-              <motion.div className="absolute top-6 right-6 z-10 text-white text-center text-xs">
-                <h1>Fadhilah Raihanah, S.T., M.Si.</h1>
-                <p>Anak Pertama Dari</p>
+              <div className="absolute z-10 text-white font-bold top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl">
+                <h1>Hana & Rozi</h1>
+              </div>
+
+              <motion.div className="absolute top-6 right-6 z-10 text-white text-xs font-semibold">
+                <h1 className="text-lg text-amber-400">
+                  Fadhilah Raihanah, S.T., M.Si.
+                </h1>
+                <p>Anak Ke-1 Dari 4 Bersaudara</p>
                 <p>Bapak Dr. H. Erwin Budi Setiawan, S.Si., M.T</p>
                 <p>dan</p>
                 <p>Ibu Hj. Rosalina Dewi, S.P</p>
               </motion.div>
             </section>
 
-            <section className="py-20 bg-gradient-to-br from-primary/5 to-secondary/5">
-              <div className="container mx-auto px-4">
+            <section className="py-20 bg-primary">
+              <div className="container mx-auto px-4 bg-gradient-to-br from-primary/5 to-secondary/5">
                 <AnimatedDiv className="text-center mb-16">
-                  <h2 className="font-heading text-4xl font-bold text-primary mb-4">
+                  <h2 className="font-heading text-4xl font-bold text-white mb-4">
                     Ayat Suci Al-Quran
                   </h2>
                   <div className="w-24 h-1 bg-secondary mx-auto rounded-full"></div>
@@ -558,7 +565,7 @@ export default function JavaneseWeddingInvitation() {
 
                 <div className="mt-8 pt-8 border-t border-primary-foreground/20">
                   <p className="text-sm text-primary-foreground/60">
-                    © 2024 - Dibuat dengan ❤️ untuk Rozi & Hana
+                    © 2025 - Created by Nirmalabs for Hana & Rozi
                   </p>
                 </div>
               </div>

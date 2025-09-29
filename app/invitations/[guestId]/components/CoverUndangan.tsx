@@ -1,4 +1,4 @@
-import { Heart } from "lucide-react";
+import { Heart, Mail } from "lucide-react";
 
 interface CoverUndanganProps {
   guestName: string;
@@ -7,8 +7,43 @@ interface CoverUndanganProps {
 
 const CoverUndangan = ({ guestName, openInvitation }: CoverUndanganProps) => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-muted via-background to-muted relative overflow-hidden">
-      <div className="absolute inset-0 opacity-20">
+    <section className="relative w-screen h-screen bg-[url('/images/cover-photo-1.JPG')] md:bg-cover bg-center bg-contain font-title bg-no-repeat bg-black overflow-hidden text-white text-center text-xs">
+      <div className="absolute inset-0 bg-black/40"></div>
+
+      <div className="relative flex flex-col space-y-4">
+        <div className="mt-6 bottom-6 left-6 z-10  font-semibold w-full">
+          <p>The Wedding of</p>
+          <h1 className="text-4xl">Hana & Rozi</h1>
+          <p>Sabtu, 8 November 2025</p>
+        </div>
+        <div className="flex justify-center">
+          <img
+            src="/images/gunungan.webp"
+            alt="Gunungan Wayang"
+            className="w-20 h-auto animate-bounce-slow opacity-80"
+          />
+        </div>
+        <div className="mt-24">
+          <h1>Dear</h1>
+          <p className="text-2xl">
+            Bapak/Ibu. <br /> {guestName}
+          </p>
+        </div>
+        <button
+          onClick={openInvitation}
+          className="mt-6 mb-10 flex items-center justify-center gap-2 rounded-lg bg-transparent border py-3 px-6 font-medium  shadow-lg transition mx-auto"
+        >
+          <Mail className="w-4 h-4" />
+          Buka Undangan
+        </button>
+      </div>
+    </section>
+  );
+};
+
+export default CoverUndangan;
+/**
+ * <div className="absolute inset-0 opacity-20">
         <div className="absolute top-16 left-16 w-32 h-32 bg-primary rounded-full blur-3xl" />
         <div className="absolute bottom-16 right-16 w-40 h-40 bg-secondary rounded-full blur-3xl" />
       </div>
@@ -35,7 +70,7 @@ const CoverUndangan = ({ guestName, openInvitation }: CoverUndanganProps) => {
               The Wedding of
             </p>
             <h1 className="font-heading text-3xl font-bold text-primary">
-              Budi & Sari
+              Hana & Rozi
             </h1>
           </div>
           <div className="space-y-2">
@@ -59,8 +94,4 @@ const CoverUndangan = ({ guestName, openInvitation }: CoverUndanganProps) => {
           </button>
         </div>
       </div>
-    </div>
-  );
-};
-
-export default CoverUndangan;
+ */
