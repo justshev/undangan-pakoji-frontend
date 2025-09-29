@@ -6,15 +6,17 @@ import {
   useSearchParams,
   usePathname,
 } from "next/navigation";
+import { Card } from "@/components/ui/card";
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 export default function ConfirmPage() {
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState<null | number>(null);
+  const [guestName, setGuestName] = useState<string | null>(null);
   const router = useRouter();
-  const params = useParams(); // path params
-  const qs = useSearchParams(); // query string
-  const pathname = usePathname(); // debug
+  const params = useParams();
+  const qs = useSearchParams();
+  const pathname = usePathname();
   const guestIdFromPath = (params?.guestId ?? params?.id) as string | undefined;
-  const guestId = guestIdFromPath ?? (qs.get("guestId") || undefined); // fallback jika ada rewrite
+  const guestId = guestIdFromPath ?? (qs.get("guestId") || undefined);
 
   useEffect(() => {
     console.log({
@@ -26,9 +28,26 @@ export default function ConfirmPage() {
     });
   }, [pathname, params, qs, guestIdFromPath, guestId]);
 
+  const fetchGuestName = async (id: string) => {
+    const res = await fetch(`${BACKEND_URL}/api/guests/${id}`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+    const { guest } = await res.json();
+
+    setGuestName(guest?.name);
+  };
+
+  fetchGuestName(guestId as string);
+
   const handleSubmit = async () => {
     if (!guestId) {
       alert("Guest ID tidak ditemukan. Pastikan URL berupa /confirm/<ID>.");
+      return;
+    }
+
+    if (!count || count > 4) {
+      alert("Kehadiran hanya boleh maksimal berjumlah 4 orang.");
       return;
     }
     const res = await fetch(`${BACKEND_URL}/api/guests/confirm/${guestId}`, {
@@ -42,24 +61,29 @@ export default function ConfirmPage() {
   };
 
   return (
-    <div className="p-6">
-      <h1 className="text-xl font-bold">Konfirmasi Kehadiran</h1>
-      <p className="text-sm text-gray-500">
-        Guest ID: {guestId ?? "(belum terdeteksi)"}
-      </p>
-      <input
-        type="number"
-        min={1}
-        value={count}
-        onChange={(e) => setCount(parseInt(e.target.value))}
-        className="border p-2 mt-4"
-      />
-      <button
-        onClick={handleSubmit}
-        className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
-      >
-        Konfirmasi
-      </button>
+    <div className="flex items-center justify-center min-h-screen ">
+      <Card className="text-center p-6 bg-card/80">
+        <h1 className="text-xl font-bold">Konfirmasi Kehadiran</h1>
+        <p className="text-sm text-gray-500">
+          Guest ID: {guestId ?? "(belum terdeteksi)"}
+        </p>
+        <p className="text-sm text-gray-500">Atas nama: {guestName}</p>
+
+        <input
+          type="number"
+          min={1}
+          value={count ? count : ""}
+          onChange={(e) => setCount(parseInt(e.target.value))}
+          placeholder="Masukkan jumlah kehadiran"
+          className="border p-2 mt-4"
+        />
+        <button
+          onClick={handleSubmit}
+          className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
+        >
+          Konfirmasi
+        </button>
+      </Card>
     </div>
   );
 }

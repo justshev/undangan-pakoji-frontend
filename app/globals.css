@@ -1,26 +1,290 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fdf2f8;
+  --foreground: #374151;
+  /* Updated to maroon primary color scheme with floral aesthetic */
+  --card: #fef7ff;
+  --card-foreground: #374151;
+  --popover: #fef7ff;
+  --popover-foreground: #374151;
+  --primary: #881337;
+  --primary-foreground: #ffffff;
+  --secondary: #be185d;
+  --secondary-foreground: #ffffff;
+  --muted: #fdf2f8;
+  --muted-foreground: #6b7280;
+  --accent: #ec4899;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #f3e8ff;
+  --input: #ffffff;
+  --ring: rgba(136, 19, 55, 0.3);
+  --chart-1: #881337;
+  --chart-2: #be185d;
+  --chart-3: #ec4899;
+  --chart-4: #9f1239;
+  --chart-5: #a21caf;
+  --radius: 0.5rem;
+  --sidebar: #fef7ff;
+  --sidebar-foreground: #374151;
+  --sidebar-primary: #881337;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #be185d;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #f3e8ff;
+  --sidebar-ring: rgba(136, 19, 55, 0.3);
 }
 
 @theme inline {
+  --font-sans: var(--font-dm-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-space-grotesk);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom animations for Javanese elements */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shadowPlay {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes petalFloat {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(2deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-1deg);
+  }
+  75% {
+    transform: translateY(-5px) rotate(1deg);
+  }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.shadow-play {
+  animation: shadowPlay 2s ease-in-out infinite;
+}
+
+.petal-animation {
+  animation: petalFloat 4s ease-in-out infinite;
+}
+
+/* Wayang-inspired decorative elements */
+.wayang-border {
+  position: relative;
+}
+
+.wayang-border::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+}
+
+.wayang-border::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+}
+
+/* Added emerald-maroon gradient backgrounds */
+.emerald-gradient {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%);
+}
+
+.maroon-gradient {
+  background: linear-gradient(
+    135deg,
+    #fdf2f8 0%,
+    #fce7f3 25%,
+    #fbcfe8 50%,
+    #f9a8d4 75%,
+    #f472b6 100%
+  );
+}
+
+.maroon-soft-gradient {
+  background: linear-gradient(135deg, #fef7ff 0%, #fdf2f8 50%, #fce7f3 100%);
+}
+
+.maroon-deep-gradient {
+  background: linear-gradient(135deg, #881337 0%, #be185d 50%, #ec4899 100%);
+}
+
+.emerald-maroon-gradient {
+  background: linear-gradient(135deg, #f0fdf4 0%, #fdf2f8 50%, #dcfce7 100%);
+}
+
+/* Added floral background patterns and maroon aesthetic styles */
+.floral-pattern {
+  background-image: radial-gradient(
+      circle at 20% 80%,
+      rgba(236, 72, 153, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(190, 24, 93, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 40% 40%,
+      rgba(136, 19, 55, 0.05) 0%,
+      transparent 50%
+    );
+}
+
+.floral-overlay {
+  position: relative;
+}
+
+.floral-overlay::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23881337' fill-opacity='0.03'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm0 0c0 11.046 8.954 20 20 20s20-8.954 20-20-8.954-20-20-20-20 8.954-20 20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Enhanced floral decorative elements */
+.floral-border {
+  position: relative;
+  padding: 2rem;
+}
+
+.floral-border::before,
+.floral-border::after {
+  content: "❀ ❀ ❀";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--primary);
+  font-size: 1.5rem;
+  opacity: 0.6;
+}
+
+.floral-border::before {
+  top: 0;
+}
+
+.floral-border::after {
+  bottom: 0;
+}
+
+/* Romantic floral card styling */
+.romantic-card {
+  background: linear-gradient(
+    145deg,
+    rgba(254, 247, 255, 0.9),
+    rgba(253, 242, 248, 0.9)
+  );
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(236, 72, 153, 0.2);
+  box-shadow: 0 8px 32px rgba(136, 19, 55, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.floral-accent {
+  background: radial-gradient(
+    circle,
+    rgba(236, 72, 153, 0.1) 0%,
+    transparent 70%
+  );
 }
