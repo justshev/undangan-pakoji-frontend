@@ -7,7 +7,7 @@ interface CoverUndanganProps {
 
 const CoverUndangan = ({ guestName, openInvitation }: CoverUndanganProps) => {
   return (
-    <section className="relative w-screen h-screen bg-[url('/images/cover-photo-1.JPG')] md:bg-cover bg-center bg-contain font-title bg-no-repeat bg-black overflow-hidden text-white text-center text-xs">
+    <section className="relative w-screen h-screen bg-[url('/images/cover-photo-1.JPG')] bg-center bg-cover font-title bg-no-repeat bg-black overflow-hidden text-white text-center text-xs">
       <div className="absolute inset-0 bg-black/40"></div>
 
       <div className="relative flex flex-col space-y-4">
