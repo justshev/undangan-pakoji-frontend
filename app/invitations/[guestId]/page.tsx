@@ -142,7 +142,7 @@ export default function JavaneseWeddingInvitation() {
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1.5 }}
-                className="absolute top-18 right-9 z-10 text-white text-xs  text-right"
+                className="absolute top-42 md:top-18 right-9 z-10 text-white text-xs  text-right"
               >
                 <h1 className="text-xl md:text-3xl text-amber-400 mb-4 font-semibold">
                   Fadhilah Raihanah, S.T., M.Si.</h1>
