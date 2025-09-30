@@ -18,15 +18,7 @@ export function WeddingHero({
   intervalMs = 3000,
   className,
 }: WeddingHeroProps) {
-  const defaultImages = useMemo(
-    () => [
-      // Placeholder bebas digunakan; ganti dengan foto Anda di public/images/*.jpg
-      "/romantic-wedding-photo-1.jpg",
-      "/romantic-wedding-photo-2.jpg",
-      "/romantic-wedding-photo-3.jpg",
-    ],
-    []
-  );
+  const defaultImages = useMemo(() => [images], []);
 
   const slides = images && images.length > 0 ? images : defaultImages;
 

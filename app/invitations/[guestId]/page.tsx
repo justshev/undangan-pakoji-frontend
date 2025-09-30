@@ -16,7 +16,7 @@ import LoveStory from "./components/love-story/LoveStory";
 
 export default function JavaneseWeddingInvitation() {
   const weddingPhotos = [
-    "/images/slider/foto-berdua-merah.jpg",
+    "/images/cover-photo-mobile.jpg",
     "/images/slider/kak-hana.jpg",
     "/images/slider/pak-rozi.jpg",
   ];
