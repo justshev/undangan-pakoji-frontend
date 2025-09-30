@@ -3,15 +3,7 @@
 import type React from "react";
 
 import { useState, useEffect, useRef } from "react";
-import {
-  Calendar,
-  MapPin,
-  Clock,
-  Users,
-  Gift,
-  Quote,
-  Heart,
-} from "lucide-react";
+import { Calendar, MapPin, Clock, Users, Gift, Quote } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import AnimatedDiv from "./components/AnimatedDiv";
@@ -135,11 +127,16 @@ export default function JavaneseWeddingInvitation() {
           </div>
 
           <div className="min-h-screen bg-background overflow-hidden">
-            <section className="relative w-screen h-screen bg-[url('/images/cover-photo.jpg')] bg-cover bg-[50%_60%] font-title">
-              <div className="absolutes inset-0 bg-black/40"></div>
+            <section className="relative w-screen h-screen bg-[url('/images/cover-photo.jpg')] bg-cover md:bg-[50%_60%] font-title">
+              <div className="absolute inset-0 bg-black/40"></div>
 
-              <motion.div className="absolute bottom-6 left-6 z-10 text-white text-right text-xs font-semibold">
-                <h1 className="text-lg text-amber-400">
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1.5 }}
+                className="absolute bottom-6 left-6 z-10 text-white text-left text-xs font-semibold"
+              >
+                <h1 className="text-xl text-amber-400 mb-4">
                   Fadhil Rozi Hendrawan, S.Kom., M.Kom.
                 </h1>
                 <p>Anak Ke-1 Dari 3 Bersaudara</p>
@@ -148,12 +145,17 @@ export default function JavaneseWeddingInvitation() {
                 <p>Ibu Hj. Hefnasari Pane, S.E</p>
               </motion.div>
 
-              <div className="absolute z-10 text-white font-bold top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl">
+              {/* <div className="absolute z-10 text-white font-bold top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl">
                 <h1>Hana & Rozi</h1>
-              </div>
+              </div> */}
 
-              <motion.div className="absolute top-6 right-6 z-10 text-white text-xs font-semibold">
-                <h1 className="text-lg text-amber-400">
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1.5 }}
+                className="absolute top-6 right-6 z-10 text-white text-xs  text-right font-semibold"
+              >
+                <h1 className="text-xl text-amber-400 mb-4">
                   Fadhilah Raihanah, S.T., M.Si.
                 </h1>
                 <p>Anak Ke-1 Dari 4 Bersaudara</p>
