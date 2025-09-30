@@ -166,7 +166,7 @@
   }
 } */
 
-@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Cinzel:wght@400..900&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -212,7 +212,7 @@
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-space-grotesk);
   --color-background: var(--background);
-  --font-title: "Cinzel", serif;
+  --font-title: "Bodoni Moda", serif;
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);

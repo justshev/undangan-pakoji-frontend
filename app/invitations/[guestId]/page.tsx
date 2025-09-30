@@ -4,13 +4,12 @@ import type React from "react";
 
 import { useState, useEffect, useRef } from "react";
 import { Calendar, MapPin, Clock, Users, Gift, Quote } from "lucide-react";
-import { Calendar, MapPin, Clock, Users, Gift, Quote } from "lucide-react";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import AnimatedDiv from "./components/AnimatedDiv";
 import CoverUndangan from "./components/CoverUndangan";
-import Image from "next/image";
+import CeritaSection from "./components/CeritaSection";
 
 export default function JavaneseWeddingInvitation() {
   const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
@@ -117,7 +116,7 @@ export default function JavaneseWeddingInvitation() {
           </div>
 
           <div className="min-h-screen bg-background overflow-hidden">
-            <section className="relative w-screen h-screen bg-[url('/images/cover-photo.jpg')] bg-cover md:bg-[50%_60%] font-title">
+            <section className="relative w-screen h-screen bg-[url('/images/cover-photo.jpg')] bg-cover md:bg-[50%_60%] bg-[50%_80%] font-title">
               <div className="absolute inset-0 bg-black/40"></div>
 
               <motion.div
@@ -126,7 +125,7 @@ export default function JavaneseWeddingInvitation() {
                 transition={{ duration: 1.5 }}
                 className="absolute bottom-6 left-6 z-10 text-white text-left text-xs font-semibold"
               >
-                <h1 className="text-xl text-amber-400 mb-4">
+                <h1 className="text-xl md:text-3xl text-amber-400 mb-4">
                   Fadhil Rozi Hendrawan, S.Kom., M.Kom.
                 </h1>
                 <p>Anak Ke-1 Dari 3 Bersaudara</p>
@@ -135,9 +134,9 @@ export default function JavaneseWeddingInvitation() {
                 <p>Ibu Hj. Hefnasari Pane, S.E</p>
               </motion.div>
 
-              {/* <div className="absolute z-10 text-white font-bold top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl">
+              <div className="absolute z-10 text-white font-medium top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:text-6xl text-2xl ">
                 <h1>Hana & Rozi</h1>
-              </div> */}
+              </div>
 
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
@@ -145,7 +144,7 @@ export default function JavaneseWeddingInvitation() {
                 transition={{ duration: 1.5 }}
                 className="absolute top-6 right-6 z-10 text-white text-xs  text-right font-semibold"
               >
-                <h1 className="text-xl text-amber-400 mb-4">
+                <h1 className="text-xl md:text-2xl text-amber-400 mb-4">
                   Fadhilah Raihanah, S.T., M.Si.
                 </h1>
                 <p>Anak Ke-1 Dari 4 Bersaudara</p>
@@ -156,7 +155,7 @@ export default function JavaneseWeddingInvitation() {
             </section>
 
             <section className="py-20 bg-primary">
-              <div className="container mx-auto px-4 bg-gradient-to-br from-primary/5 to-secondary/5">
+              <div className="container mx-auto px-4 ">
                 <AnimatedDiv className="text-center mb-16">
                   <h2 className="font-heading text-4xl font-bold text-white mb-4">
                     Ayat Suci Al-Quran
@@ -164,9 +163,9 @@ export default function JavaneseWeddingInvitation() {
                   <div className="w-24 h-1 bg-secondary mx-auto rounded-full"></div>
                 </AnimatedDiv>
 
-                <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                  <AnimatedDiv className="bg-card border border-primary/20 shadow-lg rounded-lg">
-                    <div className="p-8 text-center">
+                <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto ">
+                  <AnimatedDiv className="bg-card border border-primary/20 shadow-lg rounded-lg ">
+                    <div className="p-8 w-full text-center bg-gradient-to-br from-primary/15 to-secondary/5">
                       <Quote className="w-12 h-12 text-secondary mx-auto mb-6" />
                       <p className="text-lg text-primary font-medium mb-4 leading-relaxed">
                         &ldquo;وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ
@@ -186,7 +185,7 @@ export default function JavaneseWeddingInvitation() {
                   </AnimatedDiv>
 
                   <AnimatedDiv className="bg-card border border-primary/20 shadow-lg rounded-lg">
-                    <div className="p-8 text-center">
+                    <div className="p-8 text-center bg-gradient-to-br from-primary/15 to-secondary/5">
                       <Quote className="w-12 h-12 text-secondary mx-auto mb-6" />
                       <p className="text-lg text-primary font-medium mb-4 leading-relaxed">
                         &ldquo;وَاللَّهُ جَعَلَ لَكُم مِّنْ أَنفُسِكُمْ
@@ -265,35 +264,7 @@ export default function JavaneseWeddingInvitation() {
 
                 <div className="max-w-4xl mx-auto">
                   <AnimatedDiv className="grid md:grid-cols-3 gap-6 mb-12">
-                    {/* Tempatkan src fotomu di bawah ini */}
-                    <div className="aspect-square bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg overflow-hidden relative">
-                      <Image
-                        src="/images/cover-photo.jpg"
-                        alt="Pertemuan Pertama"
-                        fill
-                        className="object-cover hover:scale-105 transition-transform duration-300 shadow"
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                        priority
-                      />
-                    </div>
-                    <div className="aspect-square bg-gradient-to-br from-secondary/20 to-primary/20 rounded-lg overflow-hidden relative">
-                      <Image
-                        src="/images/cover-photo-1.JPG"
-                        alt="Lamaran"
-                        fill
-                        className="object-cover hover:scale-105 transition-transform duration-300"
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                      />
-                    </div>
-                    <div className="aspect-square bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg overflow-hidden relative">
-                      <Image
-                        src="/images/cover-photo.jpg"
-                        alt="Prewedding"
-                        fill
-                        className="object-cover hover:scale-105 transition-transform duration-300"
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                      />
-                    </div>
+                    <CeritaSection />
                   </AnimatedDiv>
 
                   <AnimatedDiv className="space-y-8">
