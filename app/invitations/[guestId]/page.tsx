@@ -13,8 +13,6 @@ import PhotoGallerySection from "./components/PhotoGallerySection";
 import ReservasiSection from "./components/ReservasiSection";
 import WeddingHeroSlideshow from "./components/SliderPhotoSection";
 import LoveStory from "./components/love-story/LoveStory";
-import CeritaSection from "./components/CeritaSection";
-import AnimatedDiv from "./components/AnimatedDiv";
 
 export default function JavaneseWeddingInvitation() {
   const weddingPhotos = [
@@ -127,12 +125,7 @@ export default function JavaneseWeddingInvitation() {
 
           {/* <section className="relative w-screen h-screen bg-[url('/images/cover-photo.jpg')] bg-cover md:bg-[50%_60%] bg-[50%_120%] font-title"> */}
           <div className="min-h-screen bg-background overflow-hidden">
-            <WeddingHeroSlideshow
-              images={weddingPhotos}
-              // coupleNames="Dina & Raka"
-              date="12 Desember 2025"
-              location="Jakarta"
-            />
+            <WeddingHeroSlideshow images={weddingPhotos} />
             <MempelaiSection />
             <EventDetailSection />
             <QuranSection />

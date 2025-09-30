@@ -9,21 +9,14 @@ import { cn } from "@/lib/utils";
 type WeddingHeroProps = {
   images?: string[];
   intervalMs?: number;
-  coupleNames?: string;
-  date?: string;
-  location?: string;
+
   className?: string;
-  children?: React.ReactNode;
 };
 
 export function WeddingHero({
   images,
   intervalMs = 3000,
-  coupleNames = "A & B",
-  date = "01 Januari 2026",
-  location = "Lokasi Pernikahan",
   className,
-  children,
 }: WeddingHeroProps) {
   const defaultImages = useMemo(
     () => [
