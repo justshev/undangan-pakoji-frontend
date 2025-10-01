@@ -13,6 +13,9 @@ import PhotoGallerySection from "./components/PhotoGallerySection";
 import ReservasiSection from "./components/ReservasiSection";
 import WeddingHeroSlideshow from "./components/SliderPhotoSection";
 import LoveStory from "./components/love-story/LoveStory";
+import Footer from "./components/Footer";
+import CommentList from "./components/CommentSection";
+import useGetComments from "@/hooks/useGetComments";
 
 export default function JavaneseWeddingInvitation() {
   const weddingPhotos = [
@@ -78,7 +81,21 @@ export default function JavaneseWeddingInvitation() {
   };
 
   // Removed unused handleTogglePlay to satisfy linter.
+  const comments = [
+    {
+      id: 1,
+      fullName: "Agnia Nuraura",
+      message: "Selamat menempuh hidup baru 💕",
+    },
+    {
+      id: 2,
+      fullName: "Hadin Pramiadi",
+      message: "Semoga langgeng sampai akhir hayat 🤲",
+    },
+  ];
 
+  const { data, isError, isLoading } = useGetComments();
+console.log(data)
   const handleToggleMute = () => {
     if (!audioElementRef.current) return;
     audioElementRef.current.muted = !isMuted;
@@ -133,6 +150,8 @@ export default function JavaneseWeddingInvitation() {
             <LoveStory />
             <PhotoGallerySection />
             <ReservasiSection />
+            <CommentList comments={comments} />
+            <Footer />
           </div>
         </>
       )}
