@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { FormEvent, useRef } from "react";
 import AnimatedDiv from "./AnimatedDiv";
 
 const ReservasiSection = () => {
@@ -22,7 +22,7 @@ const ReservasiSection = () => {
     }
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const name = nameRef.current?.value as string;
     const message = messageRef.current?.value as string;
