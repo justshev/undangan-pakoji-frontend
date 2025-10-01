@@ -22,7 +22,7 @@ const ReservasiSection = () => {
     }
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     const name = nameRef.current?.value as string;
     const message = messageRef.current?.value as string;
