@@ -10,7 +10,7 @@ const LoveStoryItem = ({ id }: LoveStoryItemProps) => {
     <AnimatedDiv
       className={`flex ${id % 2 === 0 ? "flex-row-reverse" : ""} gap-4`}
     >
-      <div className="aspect-square bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg overflow-hidden relative bg-black col-span-2 w-1/2 h-1/2">
+      <div className="aspect-square bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg overflow-hidden relative bg-black w-1/2 h-1/2">
         <Image
           src="/images/love-story-1.jpg"
           alt="Pertemuan Pertama"

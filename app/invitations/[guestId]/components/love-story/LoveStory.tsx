@@ -1,5 +1,4 @@
 import AnimatedDiv from "../AnimatedDiv";
-import CeritaSection from "../CeritaSection";
 import LoveStoryItem from "./LoveStoryItem";
 
 const LoveStory = () => {
@@ -14,62 +13,9 @@ const LoveStory = () => {
         </AnimatedDiv>
 
         <div className="max-w-4xl mx-auto space-y-4">
-          {/* <AnimatedDiv className="grid md:grid-cols-3 gap-6 mb-12">
-                    <CeritaSection />
-                  </AnimatedDiv> */}
           {Array.from({ length: 5 }).map((item, idx) => (
             <LoveStoryItem key={idx} id={idx + 1} />
           ))}
-          {/* 
-          <AnimatedDiv className="space-y-8">
-            <div className="bg-card border border-primary/20 shadow-lg rounded-lg">
-              <div className="p-8">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold mr-4">
-                    1
-                  </div>
-                  <h3 className="font-heading text-xl font-bold text-primary">
-                    Pertemuan Pertama
-                  </h3>
-                </div>
-                <p className="text-muted-foreground leading-relaxed">
-                  Kami pertama kali bertemu di kampus pada tahun 2020...
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-card border border-primary/20 shadow-lg rounded-lg">
-              <div className="p-8">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-secondary-foreground font-bold mr-4">
-                    2
-                  </div>
-                  <h3 className="font-heading text-xl font-bold text-primary">
-                    Menjalin Hubungan
-                  </h3>
-                </div>
-                <p className="text-muted-foreground leading-relaxed">
-                  Setelah lulus kuliah, kami tetap menjaga komunikasi...
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-card border border-primary/20 shadow-lg rounded-lg">
-              <div className="p-8">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold mr-4">
-                    3
-                  </div>
-                  <h3 className="font-heading text-xl font-bold text-primary">
-                    Lamaran & Pernikahan
-                  </h3>
-                </div>
-                <p className="text-muted-foreground leading-relaxed">
-                  Pada tahun 2025, Rozi melamar Hana...
-                </p>
-              </div>
-            </div>
-          </AnimatedDiv> */}
         </div>
       </div>
     </section>
