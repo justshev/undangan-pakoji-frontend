@@ -1,39 +1,9 @@
 import { FormEvent, useRef } from "react";
 import AnimatedDiv from "./AnimatedDiv";
+import useAddComments from "@/hooks/useAddComments";
 
 const ReservasiSection = () => {
-  const nameRef = useRef<HTMLInputElement>(null);
-  const messageRef = useRef<HTMLTextAreaElement>(null);
-
-  const storeData = async (name: string, message: string) => {
-    const response = await fetch("http://localhost:3001/api/guests/comment", {
-      method: "POST",
-      body: JSON.stringify({
-        name,
-        message,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (!response.ok) {
-      return alert("Gagal Mengirim Pesan");
-    }
-  };
-
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    const name = nameRef.current?.value as string;
-    const message = messageRef.current?.value as string;
-
-    if (name.trim() === "" || message.trim() === "") {
-      return alert("Nama atau pesan harus diisi!");
-    }
-
-    await storeData(name, message);
-  };
-
+  const { nameRef, messageRef, data, isPending, storeData } = useAddComments();
   return (
     <section className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
@@ -49,7 +19,7 @@ const ReservasiSection = () => {
 
         <AnimatedDiv className="max-w-2xl mx-auto bg-card border border-primary/20 shadow-lg rounded-lg">
           <div className="p-8">
-            <form className="space-y-6" onSubmit={handleSubmit}>
+            <form className="space-y-6" onSubmit={storeData}>
               <div>
                 <label className="block text-sm font-medium mb-2">
                   Nama Lengkap

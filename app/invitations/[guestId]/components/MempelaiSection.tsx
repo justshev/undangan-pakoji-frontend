@@ -6,28 +6,20 @@ const MempelaiSection = () => {
     <section className="relative h-screen w-screen font-title">
       <Image
         alt="Foto"
-        src="/images/cover-photo.jpg"
+        src="/images/gallery-12.JPG"
         fill
         sizes="100vw"
         className="object-cover object-[50%_80%] md:object-[10%_40%] "
         priority
       />
-      {/* <Image
-        alt="Foto"
-        src="/images/cover-photo-mobile.jpg"
-        fill
-        sizes="100vw"
-        className="object-cover object-[60%_20%] md:hidden "
-        priority
-      />
- */}
+
       <div className="absolute inset-0 bg-black/40"></div>
 
       <motion.div
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1.5 }}
-        className="absolute top-18 right-9 z-10 text-white text-right text-xs "
+        className="absolute bottom-18 right-9 z-10 text-white text-right text-xs"
       >
         <h1 className="text-xl md:text-3xl mb-4 font-semibold">
           Fadhil Rozi Hendrawan, <br /> S.Kom., M.Kom.
@@ -42,7 +34,7 @@ const MempelaiSection = () => {
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1.5 }}
-        className="absolute bottom-26 md:bottom-18 left-9 z-10 text-white text-xs  text-left"
+        className="absolute top-26 md:top-18 left-9 z-10 text-white text-xs  text-left"
       >
         <h1 className="text-xl md:text-3xl mb-4 font-bold">
           Fadhilah Raihanah, S.T., M.Si.

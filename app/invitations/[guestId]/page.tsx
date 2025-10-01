@@ -16,6 +16,7 @@ import LoveStory from "./components/love-story/LoveStory";
 import Footer from "./components/Footer";
 import CommentList from "./components/CommentSection";
 import useGetComments from "@/hooks/useGetComments";
+import { Countdown } from "./components/Countdown";
 
 export default function JavaneseWeddingInvitation() {
   const weddingPhotos = [
@@ -94,8 +95,6 @@ export default function JavaneseWeddingInvitation() {
     },
   ];
 
-  const { data, isError, isLoading } = useGetComments();
-console.log(data)
   const handleToggleMute = () => {
     if (!audioElementRef.current) return;
     audioElementRef.current.muted = !isMuted;
@@ -148,9 +147,10 @@ console.log(data)
             <QuranSection />
             <ProfileSection />
             <LoveStory />
+            <Countdown targetDate="2025-11-08T00:00:00" />
             <PhotoGallerySection />
             <ReservasiSection />
-            <CommentList comments={comments} />
+            <CommentList />
             <Footer />
           </div>
         </>

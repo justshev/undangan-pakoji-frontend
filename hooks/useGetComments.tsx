@@ -5,7 +5,7 @@ import { useState } from "react";
 const useGetComments = () => {
   const getComment = async () => {
     const response = await axios.get(
-      "http://localhost:3001/api/guests/comments"
+      "http://localhost:3001/api/comments"
     );
     return response.data;
   };
