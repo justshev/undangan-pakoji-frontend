@@ -6,7 +6,6 @@ import { useState, useEffect, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
 import CoverUndangan from "./components/CoverUndangan";
 import MempelaiSection from "./components/MempelaiSection";
-import QuranSection from "./components/QuranSection";
 import ProfileSection from "./components/ProfileSection";
 import EventDetailSection from "./components/EventDetailSection";
 import PhotoGallerySection from "./components/PhotoGallerySection";
@@ -15,7 +14,7 @@ import WeddingHeroSlideshow from "./components/SliderPhotoSection";
 import LoveStory from "./components/love-story/LoveStory";
 import Footer from "./components/Footer";
 import CommentList from "./components/CommentSection";
-import useGetComments from "@/hooks/useGetComments";
+import { Countdown } from "./components/Countdown";
 
 export default function JavaneseWeddingInvitation() {
   const weddingPhotos = [
@@ -81,21 +80,19 @@ export default function JavaneseWeddingInvitation() {
   };
 
   // Removed unused handleTogglePlay to satisfy linter.
-  const comments = [
-    {
-      id: 1,
-      fullName: "Agnia Nuraura",
-      message: "Selamat menempuh hidup baru 💕",
-    },
-    {
-      id: 2,
-      fullName: "Hadin Pramiadi",
-      message: "Semoga langgeng sampai akhir hayat 🤲",
-    },
-  ];
+  // const comments = [
+  //   {
+  //     id: 1,
+  //     fullName: "Agnia Nuraura",
+  //     message: "Selamat menempuh hidup baru 💕",
+  //   },
+  //   {
+  //     id: 2,
+  //     fullName: "Hadin Pramiadi",
+  //     message: "Semoga langgeng sampai akhir hayat 🤲",
+  //   },
+  // ];
 
-  const { data, isError, isLoading } = useGetComments();
-console.log(data)
   const handleToggleMute = () => {
     if (!audioElementRef.current) return;
     audioElementRef.current.muted = !isMuted;
@@ -143,14 +140,15 @@ console.log(data)
           {/* <section className="relative w-screen h-screen bg-[url('/images/cover-photo.jpg')] bg-cover md:bg-[50%_60%] bg-[50%_120%] font-title"> */}
           <div className="min-h-screen bg-background overflow-hidden">
             <WeddingHeroSlideshow images={weddingPhotos} />
+            <ProfileSection />
+            {/* <QuranSection /> */}
             <MempelaiSection />
             <EventDetailSection />
-            <QuranSection />
-            <ProfileSection />
             <LoveStory />
+            <Countdown targetDate="2025-11-08T00:00:00" />
             <PhotoGallerySection />
             <ReservasiSection />
-            <CommentList comments={comments} />
+            <CommentList />
             <Footer />
           </div>
         </>
