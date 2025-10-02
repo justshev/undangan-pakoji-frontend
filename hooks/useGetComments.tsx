@@ -11,8 +11,9 @@ const useGetComments = () => {
   };
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["comment"],
+    queryKey: ["comments"],
     queryFn: getComment,
+    
   });
 
   return {

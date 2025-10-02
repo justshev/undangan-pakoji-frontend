@@ -54,7 +54,7 @@ export function Countdown({ targetDate, className }: CountdownProps) {
 
   return (
     <section
-      className={cn("py-16 text-center bg-background relative", className)}
+      className={cn("py-16 text-center bg-background relative px-8", className)}
     >
       <motion.h2
         initial={{ opacity: 0, y: 20 }}

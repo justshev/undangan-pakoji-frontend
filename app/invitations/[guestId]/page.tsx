@@ -142,10 +142,10 @@ export default function JavaneseWeddingInvitation() {
           {/* <section className="relative w-screen h-screen bg-[url('/images/cover-photo.jpg')] bg-cover md:bg-[50%_60%] bg-[50%_120%] font-title"> */}
           <div className="min-h-screen bg-background overflow-hidden">
             <WeddingHeroSlideshow images={weddingPhotos} />
+            <ProfileSection />
+            {/* <QuranSection /> */}
             <MempelaiSection />
             <EventDetailSection />
-            <QuranSection />
-            <ProfileSection />
             <LoveStory />
             <Countdown targetDate="2025-11-08T00:00:00" />
             <PhotoGallerySection />

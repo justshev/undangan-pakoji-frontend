@@ -11,10 +11,10 @@ const useAddComments = () => {
   const storeData = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
     const name = nameRef.current?.value;
     const message = messageRef.current?.value;
-
-    const response = await axios.post("http://localhost:3001/api/comment", {
+    const response = await axios.post(`${BACKEND_URL}/api/comment`, {
       name,
       message,
     });
@@ -33,7 +33,7 @@ const useAddComments = () => {
   const { data, isPending } = useMutation({
     mutationFn: storeData,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["comment"] });
+      queryClient.invalidateQueries({ queryKey: ["comments"] });
     },
   });
 

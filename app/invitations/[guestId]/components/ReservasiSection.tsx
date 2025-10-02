@@ -47,7 +47,9 @@ const ReservasiSection = () => {
 
               <button
                 type="submit"
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                className={`w-full bg-primary ${
+                  isPending ? "bg-primary/30" : ""
+                }  text-primary-foreground font-medium py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300`}
               >
                 Kirim Pesan
               </button>

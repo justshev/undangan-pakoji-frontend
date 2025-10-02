@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const MempelaiSection = () => {
   return (
-    <section className="relative h-screen w-screen font-title">
+    <section className="relative h-screen w-screen font-title overflow-hidden">
       <Image
         alt="Foto"
         src="/images/gallery-12.JPG"
