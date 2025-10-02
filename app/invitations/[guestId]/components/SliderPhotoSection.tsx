@@ -1,53 +1,64 @@
 "use client";
 
 import type React from "react";
-
-import { useEffect, useMemo, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  AnimatePresence,
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import { cn } from "@/lib/utils";
 
 type WeddingHeroProps = {
   images?: string[];
   intervalMs?: number;
-
   className?: string;
+  /** Maksimum pergeseran parallax (px) ketika seluruh section discroll habis */
+  parallaxMaxOffsetPx?: number;
 };
 
 export function WeddingHero({
   images,
   intervalMs = 3000,
   className,
+  parallaxMaxOffsetPx = 150,
 }: WeddingHeroProps) {
-  const defaultImages = useMemo(() => [images], []);
+  // Default images kalau props kosong (opsional, sesuaikan punyamu)
+  const defaultImages = useMemo(() => images ?? [], [images]);
+  const slides = defaultImages.length > 0 ? defaultImages : images ?? [];
 
-  const slides = images && images.length > 0 ? images : defaultImages;
-
-  const [index, setIndex] = useState(0);
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const prefersReducedMotion = useReducedMotion();
 
+  // === Parallax hanya untuk section ini ===
+  const heroSectionRef = useRef<HTMLElement | null>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroSectionRef,                // progress scroll relatif terhadap section hero
+    offset: ["start start", "end start"],  // 0 saat top hero bertemu top viewport, 1 saat bottom hero bertemu top viewport
+  });
+  const parallaxTranslateY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [0, parallaxMaxOffsetPx]               // geser background ke bawah saat discroll (efek parallax)
+  );
+
+  // === Slideshow interval ===
   useEffect(() => {
     if (slides.length <= 1) return;
 
-    const tick = () => {
-      // Mulai efek kabut
+    const runTick = () => {
       setIsTransitioning(true);
 
-      // Tunggu sedikit agar kabut terlihat, lalu ganti foto
-      const changeTimeout = setTimeout(
-        () => {
-          setIndex((prev) => (prev + 1) % slides.length);
-        },
-        prefersReducedMotion ? 0 : 300
-      );
+      const changeTimeout = setTimeout(() => {
+        setCurrentSlideIndex((prev) => (prev + 1) % slides.length);
+      }, prefersReducedMotion ? 0 : 300);
 
-      // Setelah foto berganti, kabut perlahan hilang
-      const clearFogTimeout = setTimeout(
-        () => {
-          setIsTransitioning(false);
-        },
-        prefersReducedMotion ? 0 : 900
-      );
+      const clearFogTimeout = setTimeout(() => {
+        setIsTransitioning(false);
+      }, prefersReducedMotion ? 0 : 900);
 
       return () => {
         clearTimeout(changeTimeout);
@@ -55,14 +66,13 @@ export function WeddingHero({
       };
     };
 
-    const interval = setInterval(() => {
-      const cleanup = tick();
-      // bersihkan timeout setiap tick
+    const intervalId = setInterval(() => {
+      const cleanup = runTick();
       return cleanup;
     }, intervalMs);
 
-    return () => clearInterval(interval);
-  }, [slides.length, intervalMs, prefersReducedMotion]);
+    return () => clearInterval(intervalId);
+  }, [slides.length, intervalMs, prefersReducedMotion, slides]);
 
   const transitionCommon = {
     duration: prefersReducedMotion ? 0 : 0.8,
@@ -71,20 +81,22 @@ export function WeddingHero({
 
   return (
     <section
+      ref={heroSectionRef}
       className={cn(
-        "relative w-full h-screen md:h-screen overflow-hidden",
+        "relative w-full h-screen overflow-hidden", // overflow-hidden penting agar parallax tak bocor
         className
       )}
       aria-label="Hero Pernikahan"
     >
-      {/* Layer gambar sebagai background dengan crossfade */}
+      {/* Layer gambar sebagai background dengan crossfade + PARALLAX */}
       <div className="absolute inset-0">
         <AnimatePresence mode="wait">
           <motion.div
-            key={index}
+            key={currentSlideIndex}
             className="absolute inset-0 bg-cover bg-center will-change-transform"
             style={{
-              backgroundImage: `url(${slides[index]})`,
+              backgroundImage: `url(${slides[currentSlideIndex]})`,
+              y: parallaxTranslateY, // <- efek parallax di sini
             }}
             initial={{ opacity: 0, scale: 1.02 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -95,14 +107,14 @@ export function WeddingHero({
         </AnimatePresence>
       </div>
 
-      {/* Overlay hitam sesuai permintaan */}
-      <div className="absolute inset-0 bg-black/40"></div>
+      {/* Overlay gelap */}
+      <div className="absolute inset-0 bg-black/40" />
 
       {/* Efek kabut saat transisi */}
       <AnimatePresence>
         {isTransitioning && (
           <motion.div
-            key={`fog-${index}`}
+            key={`fog-${currentSlideIndex}`}
             className="pointer-events-none absolute inset-0"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -113,9 +125,7 @@ export function WeddingHero({
             }}
             aria-hidden="true"
           >
-            {/* Sedikit blur latar untuk kesan kabut */}
             <div className="absolute inset-0 backdrop-blur-sm" />
-            {/* Radial gradients terang tipis sebagai kabut */}
             <div
               className="absolute inset-0"
               style={{
@@ -130,7 +140,7 @@ export function WeddingHero({
       {/* Konten */}
       <div className="relative z-10 h-full flex items-center justify-center px-6 font-title">
         <div className="text-center max-w-3xl absolute bottom-6 right-18">
-          <div className="text-balance text-primary-foreground text-4xl md:text-6xl tracking-tight ">
+          <div className="text-balance text-primary-foreground text-4xl md:text-6xl tracking-tight">
             <p>Hana</p>
             <p>&</p>
             <p>Rozi</p>

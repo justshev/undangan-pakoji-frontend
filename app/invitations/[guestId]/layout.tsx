@@ -21,7 +21,9 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
+
   children: React.ReactNode; // Next.js expects React.ReactNode, ReactElement was too sempit
+
 }>) {
   return (
     <html lang="en">
