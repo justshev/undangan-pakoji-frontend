@@ -1,4 +1,3 @@
-import Image from "next/image";
 import AnimatedDiv from "./AnimatedDiv";
 import { Quote } from "lucide-react";
 
