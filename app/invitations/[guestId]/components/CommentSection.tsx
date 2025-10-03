@@ -18,7 +18,14 @@ const CommentList = () => {
     );
   }
   return (
-    <section className="bg-pink-50 pb-8 px-4 font-description">
+    <section className="bg-pink-50 pb-8 px-4 font-description relative">
+      <div
+        className="
+    absolute inset-0 pointer-events-none opacity-20
+    bg-[url('/images/bg-batik.jpg')] bg-repeat bg-cover
+  "
+      />
+
       <div className="max-w-2xl mx-auto space-y-6">
         {isLoading && <div>Loading...</div>}
         {!isLoading &&
