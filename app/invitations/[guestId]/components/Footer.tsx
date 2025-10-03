@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="py-12 bg-primary text-primary-foreground">
+    <footer className="py-12 bg-primary text-primary-foreground font-description">
       <div className="container mx-auto px-4 text-center">
         <div className="mb-6">
           <div className="w-16 h-16 relative mx-auto opacity-80">

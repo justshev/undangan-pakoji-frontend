@@ -138,7 +138,7 @@ export default function JavaneseWeddingInvitation() {
           </div>
 
           {/* <section className="relative w-screen h-screen bg-[url('/images/cover-photo.jpg')] bg-cover md:bg-[50%_60%] bg-[50%_120%] font-title"> */}
-          <div className="min-h-screen bg-background overflow-hidden">
+          <div className="min-h-screen bg-background overflow-hidden font-bodoni">
             <WeddingHeroSlideshow images={weddingPhotos} />
             <ProfileSection />
             {/* <QuranSection /> */}

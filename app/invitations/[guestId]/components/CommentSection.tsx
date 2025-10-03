@@ -7,7 +7,7 @@ const CommentList = () => {
   const safeData = Array.isArray(data) ? data : [];
   if (safeData.length === 0) {
     return (
-      <section className="bg-pink-50 py-12 px-4 text-center">
+      <section className="bg-pink-50 py-12 px-4 text-center font-description">
         <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6">
           Doa & Pesan
         </h2>
@@ -18,7 +18,7 @@ const CommentList = () => {
     );
   }
   return (
-    <section className="bg-pink-50 pb-8 px-4">
+    <section className="bg-pink-50 pb-8 px-4 font-description">
       <div className="max-w-2xl mx-auto space-y-6">
         {isLoading && <div>Loading...</div>}
         {!isLoading &&
