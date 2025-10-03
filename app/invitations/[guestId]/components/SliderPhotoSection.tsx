@@ -140,12 +140,12 @@ export function WeddingHero({
       {/* Konten */}
       <div className="relative z-10 h-full flex items-center justify-center px-6 font-title">
         <div className="text-center max-w-3xl absolute bottom-6 right-18">
-          <div className="text-balance text-primary-foreground text-4xl md:text-6xl tracking-tight">
+          <div className="text-balance  text-4xl md:text-6xl tracking-tight text-[#B69F5E]">
             <p>Hana</p>
             <p>&</p>
             <p>Rozi</p>
           </div>
-          <p className="mt-4 text-primary-foreground/90 text-lg md:text-2xl">
+          <p className="mt-4 text-lg md:text-2xl text-[#B69F5E]">
             08/11/2025
           </p>
         </div>

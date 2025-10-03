@@ -51,11 +51,11 @@ const PhotoGallerySection = () => {
     <section className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <AnimatedDiv className="text-center mb-16">
-          <h2 className="font-heading text-4xl font-bold text-primary mb-4">
+          <h2 className="font-title text-4xl font-bold text-primary mb-4">
             Galeri Foto
           </h2>
-          <div className="w-24 h-1 bg-secondary mx-auto rounded-full"></div>
-          <p className="text-muted-foreground mt-4">
+          <div className="w-24 h-1 bg-primary mx-auto rounded-full"></div>
+          <p className="text-muted-foreground font-description mt-4">
             Momen-momen indah perjalanan cinta kami
           </p>
         </AnimatedDiv>

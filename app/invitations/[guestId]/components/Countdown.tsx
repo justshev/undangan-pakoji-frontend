@@ -60,11 +60,11 @@ export function Countdown({ targetDate, className }: CountdownProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="text-3xl font-bold text-primary mb-4"
+        className="text-3xl font-bold font-title text-primary mb-4"
       >
         Menuju Hari Bahagia
       </motion.h2>
-      <p className="text-muted-foreground mb-8">
+      <p className="text-muted-foreground font-description mb-8">
         Hitung mundur menuju hari pernikahan kami
       </p>
 
@@ -76,11 +76,14 @@ export function Countdown({ targetDate, className }: CountdownProps) {
         className="bg-white shadow-lg rounded-2xl px-6 md:px-12 py-8 max-w-3xl mx-auto flex justify-between items-center"
       >
         {Object.entries(timeLeft).map(([label, value]) => (
-          <div key={label} className="flex flex-col items-center flex-1">
+          <div
+            key={label}
+            className="flex flex-col items-center font-title flex-1"
+          >
             <span className="text-3xl md:text-5xl font-bold text-primary">
               {value}
             </span>
-            <span className="text-xs md:text-sm text-muted-foreground capitalize mt-2">
+            <span className="text-xs md:text-sm mt-6 text-muted-foreground capitalize">
               {label}
             </span>
           </div>

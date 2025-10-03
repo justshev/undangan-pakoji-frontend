@@ -173,12 +173,12 @@
 :root {
   --background: #fdf2f8;
   --foreground: #374151;
-
+  --gold: #b69f5e;
   --card: #fef7ff;
   --card-foreground: #374151;
   --popover: #fef7ff;
   --popover-foreground: #374151;
-  --primary: #881337;
+  --primary: #690108;
   --primary-foreground: #ffffff;
   --secondary: #be185d;
   --secondary-foreground: #ffffff;
@@ -207,15 +207,32 @@
   --sidebar-ring: rgba(136, 19, 55, 0.3);
 }
 
+@font-face {
+  font-family: "JawaPalsu";
+  src: url("/fonts/jawaPalsu.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: fa;
+  src: url("/fonts/Bodoni.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme inline {
   --font-sans: var(--font-dm-sans);
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-space-grotesk);
   --color-background: var(--background);
-  --font-title: "Bodoni Moda", serif; /* ✅ benar */
-  --font-description: "Bodoni Moda", serif;
+  --font-title: "JawaPalsu", serif; /* ✅ benar */
+  --font-description: "Bodoni", serif;
   --color-foreground: var(--foreground);
   --color-card: var(--card);
+  --text-gold: var(--gold);
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
@@ -249,6 +266,11 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@font-face {
+  font-family: "Bodoni", serif;
+  src: url("/undangan-pakoji-frontend/public/fonts//Bodoni.ttf");
 }
 
 @layer base {

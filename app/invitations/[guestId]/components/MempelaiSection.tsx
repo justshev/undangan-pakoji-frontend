@@ -19,7 +19,7 @@ const MempelaiSection = () => {
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1.5 }}
-        className="absolute bottom-18 right-9 z-10 text-white text-right text-xs"
+        className="absolute bottom-18 right-9 z-10 text-white text-right text-xs font-description md:text-base"
       >
         <h1 className="text-xl md:text-3xl mb-4 font-semibold">
           Fadhil Rozi Hendrawan, <br /> S.Kom., M.Kom.
@@ -34,7 +34,7 @@ const MempelaiSection = () => {
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1.5 }}
-        className="absolute top-26 md:top-18 left-9 z-10 text-white text-xs  text-left"
+        className="absolute top-26 md:top-18 left-9 z-10 text-white text-xs font-description text-left md:text-base"
       >
         <h1 className="text-xl md:text-3xl mb-4 font-bold">
           Fadhilah Raihanah, S.T., M.Si.
