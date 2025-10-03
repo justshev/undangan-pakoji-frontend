@@ -3,14 +3,15 @@ import AnimatedDiv from "./AnimatedDiv";
 
 const EventDetailSection = () => {
   return (
-    <section className="py-20 bg-background">
+    <section className="py-20 relative bg-background">
       <div className="container mx-auto px-4">
         <AnimatedDiv className="text-center mb-16">
-          <h2 className="font-title text-4xl font-bold text-primary mb-4">
+          <h2 className="font-title text-4xl font-bold text-primary mb-4 ">
             Acara Pernikahan
           </h2>
           <div className="w-24 h-1 bg-primary mx-auto rounded-full"></div>
         </AnimatedDiv>
+        <div className="absolute inset-0 pointer-events-none opacity-20 bg-[url('/images/bg-batik.jpg')] bg-repeat bg-contain" />
 
         <div className="grid  gap-8 max-w-4xl mx-auto">
           {/* Akad */}
@@ -35,7 +36,7 @@ const EventDetailSection = () => {
                   </h3>
                   <p>Pukul 11.00 - 14.00 WIB</p>
                 </div>
-                <div className="grid col-span-3 my-6">
+                <div className="grid col-span-3 md:text-lg text-base  my-6">
                   <h1>Gedung Manterawu</h1>
                   <p className="md:w-1/2 mx-auto">
                     Jl. Telekomunikasi No. 1 Bandung Terusan Buahbatu -

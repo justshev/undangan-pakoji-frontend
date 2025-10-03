@@ -15,6 +15,7 @@ import LoveStory from "./components/love-story/LoveStory";
 import Footer from "./components/Footer";
 import CommentList from "./components/CommentSection";
 import { Countdown } from "./components/Countdown";
+import ImageCarousel from "./components/PhotoGallerySection";
 
 export default function JavaneseWeddingInvitation() {
   const weddingPhotos = [
@@ -78,20 +79,6 @@ export default function JavaneseWeddingInvitation() {
       }
     }
   };
-
-  // Removed unused handleTogglePlay to satisfy linter.
-  // const comments = [
-  //   {
-  //     id: 1,
-  //     fullName: "Agnia Nuraura",
-  //     message: "Selamat menempuh hidup baru 💕",
-  //   },
-  //   {
-  //     id: 2,
-  //     fullName: "Hadin Pramiadi",
-  //     message: "Semoga langgeng sampai akhir hayat 🤲",
-  //   },
-  // ];
 
   const handleToggleMute = () => {
     if (!audioElementRef.current) return;

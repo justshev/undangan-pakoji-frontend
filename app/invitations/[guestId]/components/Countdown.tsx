@@ -67,13 +67,15 @@ export function Countdown({ targetDate, className }: CountdownProps) {
       <p className="text-muted-foreground font-description mb-8">
         Hitung mundur menuju hari pernikahan kami
       </p>
+      <div className="absolute inset-0 pointer-events-none opacity-20 bg-[url('/images/bg-batik.jpg')] bg-repeat bg-cover" />
+        {/* className="bg-white/80 backdrop-blur-sm rounded-lg shadow p-6 text-left border border-pink-100" */}
 
       {/* Container besar */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="bg-white shadow-lg rounded-2xl px-6 md:px-12 py-8 max-w-3xl mx-auto flex justify-between items-center"
+        className="bg-white backdrop-blur-sm shadow-lg rounded-2xl px-6 md:px-12 py-8 max-w-3xl mx-auto flex justify-between items-center"
       >
         {Object.entries(timeLeft).map(([label, value]) => (
           <div

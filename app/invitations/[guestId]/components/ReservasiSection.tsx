@@ -3,9 +3,9 @@ import AnimatedDiv from "./AnimatedDiv";
 import useAddComments from "@/hooks/useAddComments";
 
 const ReservasiSection = () => {
-  const { nameRef, messageRef, data, isPending, storeData } = useAddComments();
+  const { nameRef, messageRef, isPending, storeData } = useAddComments();
   return (
-    <section className="py-20 bg-muted/30">
+    <section className="py-20 bg-muted/30 relative">
       <div className="container mx-auto px-4">
         <AnimatedDiv className="text-center mb-16">
           <h2 className="font-title text-4xl font-bold text-primary mb-4">
@@ -16,6 +16,13 @@ const ReservasiSection = () => {
             Doa & Pesan Anda sangatlah membantu kami
           </p>
         </AnimatedDiv>
+
+        <div
+          className="
+    absolute inset-0 pointer-events-none opacity-20
+    bg-[url('/images/bg-batik.jpg')] bg-repeat bg-contain
+  "
+        />
 
         <AnimatedDiv className="max-w-2xl font-description mx-auto bg-card border border-primary/20 shadow-lg rounded-lg">
           <div className="p-8">
