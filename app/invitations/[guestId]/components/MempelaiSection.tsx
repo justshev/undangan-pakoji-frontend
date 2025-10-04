@@ -6,7 +6,7 @@ const MempelaiSection = () => {
     <section className="relative h-screen w-screen font-title overflow-hidden">
       <Image
         alt="Foto"
-        src="/images/gallery-12.JPG"
+        src="/images/gallery-12.jpg"
         fill
         sizes="100vw"
         className="object-cover object-[50%_80%] md:object-[10%_40%] "

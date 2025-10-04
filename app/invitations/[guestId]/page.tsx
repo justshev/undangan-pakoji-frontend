@@ -15,7 +15,6 @@ import LoveStory from "./components/love-story/LoveStory";
 import Footer from "./components/Footer";
 import CommentList from "./components/CommentSection";
 import { Countdown } from "./components/Countdown";
-import ImageCarousel from "./components/PhotoGallerySection";
 
 export default function JavaneseWeddingInvitation() {
   const weddingPhotos = [
@@ -128,7 +127,6 @@ export default function JavaneseWeddingInvitation() {
           <div className="min-h-screen bg-background overflow-hidden font-bodoni">
             <WeddingHeroSlideshow images={weddingPhotos} />
             <ProfileSection />
-            {/* <QuranSection /> */}
             <MempelaiSection />
             <EventDetailSection />
             <LoveStory />
