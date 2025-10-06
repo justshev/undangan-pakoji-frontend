@@ -27,7 +27,7 @@ export function Carousel({
 
   const goTo = React.useCallback(
     (i: number) => {
-      setIndex((prev) => {
+      setIndex(() => {
         const next = ((i % count) + count) % count;
         return next;
       });
@@ -70,7 +70,7 @@ export function Carousel({
     setDragOffset(delta);
   };
 
-  const onPointerUp = (e: React.PointerEvent) => {
+  const onPointerUp = () => {
     if (!isDragging) return;
     setIsDragging(false);
     const threshold = Math.max(48, widthRef.current * 0.2); // px
@@ -137,7 +137,6 @@ export function Carousel({
             >
               <img
                 src={img || "/placeholder.svg"}
-                
                 className="block h-64 w-full object-contain md:h-80 lg:h-96"
                 draggable={false}
               />

@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Mail } from "lucide-react";
-import Image from "next/image";
 
 interface CoverUndanganProps {
   guestName: string;
@@ -15,7 +14,7 @@ const CoverUndangan = ({ guestName, openInvitation }: CoverUndanganProps) => {
       <div className="relative flex flex-col space-y-4">
         <div className="mt-12 bottom-6 left-6 z-10 font-semibold w-full ">
           <p>The Wedding of</p>
-          <h1 className="text-4xl font-normal">Hana & Rozi</h1>
+          <h1 className="text-4xl font-normal my-4">Hana & Rozi</h1>
           <p>Sabtu, 8 November 2025</p>
         </div>
         <div className="flex justify-center">
@@ -23,7 +22,7 @@ const CoverUndangan = ({ guestName, openInvitation }: CoverUndanganProps) => {
             <img
               src="/images/gunungan.webp"
               alt="Gunungan Wayang"
-              className="w-20 h-auto animate-bounce-slow opacity-80"
+              className="w-20 h-auto animate-bounce-slow md:mt-4 mt-8 opacity-80"
             />
           </motion.div>
         </div>

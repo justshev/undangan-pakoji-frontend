@@ -9,7 +9,7 @@ const MempelaiSection = () => {
         src="/images/gallery-12.jpg"
         fill
         sizes="100vw"
-        className="object-cover object-[50%_80%] md:object-[10%_40%] "
+        className="object-cover object-[50%_80%] md:object-[10%_38%] "
         priority
       />
 
@@ -21,7 +21,7 @@ const MempelaiSection = () => {
         transition={{ duration: 1.5 }}
         className="absolute bottom-18 right-9 z-10 text-white text-right text-xs font-description md:text-base"
       >
-        <h1 className="text-xl md:text-3xl mb-4 font-semibold">
+        <h1 className="text-xl md:text-3xl mb-4 font-semibold font-description">
           Fadhil Rozi Hendrawan, <br /> S.Kom., M.Kom.
         </h1>
         <p>Anak Pertama Dari</p>
@@ -29,7 +29,14 @@ const MempelaiSection = () => {
         <p>dan</p>
         <p>Ibu Hj. Hefnasari Pane, S.E</p>
       </motion.div>
-
+      <div className="absolute font-description text-white mx-auto text-center w-full text-xs mt-4 px-2">
+        <h1>Assalamualaikum Wr. Wb </h1>
+        <p>
+          Dengan memohon rahmat dan ridho Allah Subhanahu Wa Ta&apos;ala. Kami
+          mengundang Bapak/Ibu/Saudara/I, untuk menghadiri Akad/Resepsi
+          Pernikahan Kami,
+        </p>
+      </div>
       <motion.div
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}

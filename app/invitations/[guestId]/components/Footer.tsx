@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="mb-6">
           <div className="w-16 h-16 relative mx-auto opacity-80">
             <Image
-              src="/images/gunungan.webp"
+              src="/images/gunungan-emas.png"
               alt="Gunungan Wayang"
               fill
               className="object-contain"
@@ -15,8 +15,8 @@ const Footer = () => {
             />
           </div>
         </div>
-
-        <h3 className="font-heading text-2xl font-bold mb-4">Rozi & Hana</h3>
+ 
+        <h3 className="font-heading text-2xl font-bold mb-4">Hana & Rozi</h3>
 
         <p className="text-primary-foreground/80 mb-6 max-w-2xl mx-auto">
           &ldquo;Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan

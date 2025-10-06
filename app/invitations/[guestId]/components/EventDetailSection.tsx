@@ -1,5 +1,5 @@
-import { Calendar, Clock, Gift, MapPin, Users } from "lucide-react";
 import AnimatedDiv from "./AnimatedDiv";
+import Link from "next/link";
 
 const EventDetailSection = () => {
   return (
@@ -17,43 +17,56 @@ const EventDetailSection = () => {
           {/* Akad */}
           <AnimatedDiv className="bg-muted border border-primary/20 shadow-lg rounded-lg font-description">
             <div className="p-8">
-              <div className="grid grid-cols-3  gap-2 text-center">
-                <div className="">
-                  <h3 className="font-heading text-2xl font-bold text-primary mb-2">
-                    Akad Nikah
-                  </h3>
-                  <p>Pukul 08.00 - 10.00 WIB</p>
-                </div>
-                <div>
-                  <div className="font-heading text-2xl font-bold text-primary mb-2">
-                    <h1 className="">Sabtu</h1>
-                    <p>08 November 2025</p>
+              <div className="grid grid-cols-3 gap-2 text-center">
+                <div className="col-span-3">
+                  <header className="flex gap-12 items-center justify-center">
+                    <div className="w-full h-[1px] bg-primary" />
+                    <h3 className="font-heading text-2xl font-bold text-primary mb-2 ">
+                      Akad Nikah
+                    </h3>
+                    <div className=" w-full h-[1px] bg-primary" />
+                  </header>
+                  <div className="font-heading  text-black mb-2">
+                    <h1 className="">Sabtu, 08 November 2025</h1>
+                    <p>08.00 - 10.00 WIB</p>
+                    <p>Gedung Manterawu, Telkom University</p>
+                    <p className="md:w-3/4 mx-auto">
+                      Jl. Telekomunikasi No. 1, Bandung Terusan Buahbatu -
+                      Bojongsoang, Sukapura, Kec. Dayeuhkolot, Kab. Bandung,
+                      Jawa Barat
+                    </p>
                   </div>
                 </div>
-                <div>
-                  <h3 className="font-heading text-2xl font-bold text-primary mb-2">
-                    Resepsi
-                  </h3>
-                  <p>Pukul 11.00 - 14.00 WIB</p>
+
+                <div className="col-span-3">
+                  <header className="flex gap-12 items-center justify-center">
+                    <div className="w-full h-[1px] bg-primary" />
+                    <h3 className="font-heading text-2xl font-bold text-primary mb-2 ">
+                      Resepsi
+                    </h3>
+                    <div className=" w-full h-[1px] bg-primary" />
+                  </header>
+
+                  <div className="font-heading  text-black mb-2">
+                    <h1>Sabtu, 08 November 2025</h1>
+                    <p>11.00 - 15.00 WIB</p>
+                    <p>Gedung Manterawu, Telkom University</p>
+                    <p className="md:w-3/4 mx-auto">
+                      Jl. Telekomunikasi No. 1, Bandung Terusan Buahbatu -
+                      Bojongsoang, Sukapura, Kec. Dayeuhkolot, Kab. Bandung,
+                      Jawa Barat
+                    </p>
+                  </div>
                 </div>
-                <div className="grid col-span-3 md:text-lg text-base  my-6">
-                  <h1>Gedung Manterawu</h1>
-                  <p className="md:w-1/2 mx-auto">
-                    Jl. Telekomunikasi No. 1 Bandung Terusan Buahbatu -
-                    Bojongsoang, Sukapura, Kec. Dayeuhkolot, Kab. Bandung, Jawa
-                    Barat
-                  </p>
-                </div>
-                <div className="overflow-hidden  col-span-3">
-                  <iframe
-                    className="mx-auto"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.3171653541294!2d107.62978837499698!3d-6.9718581930288!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e9ad9a473177%3A0x75173644e4d27373!2sGedung%20Manterawu!5e0!3m2!1sid!2sid!4v1759499523058!5m2!1sid!2sid"
-                    width="600"
-                    height="450"
-                    allowFullScreen={true}
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  ></iframe>
+
+                <div className="w-full flex justify-center col-span-3">
+                  <Link
+                    href={"https://maps.app.goo.gl/2xaeBg4U6ps32D5w7"}
+                    className="cursor-pointer px-3 py-2 bg-primary text-white rounded-lg"
+                    target="_blank"
+                  >
+                    <button>Detail Lokasi</button>
+                  </Link>
                 </div>
               </div>
             </div>
