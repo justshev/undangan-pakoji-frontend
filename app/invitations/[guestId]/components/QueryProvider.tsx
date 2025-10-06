@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
 
 interface QueryProviderProps {
-  children: React.ReactNode;
+  children: React.ReactNode; // gunakan ReactNode agar bisa menerima string, fragment, null, dll
 }
 
 const QueryProvider = ({ children }: QueryProviderProps) => {
