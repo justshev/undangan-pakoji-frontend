@@ -13,7 +13,7 @@ const LoveStory = () => {
     {
       id: 2,
       title: "Pertemuan Kedua",
-      image: "/images/love-story-2.jpg",
+      image: "/images/love-story-2.JPG",
       description:
         " Selang sebulan kemudian, takdir kembali mempertemukan mereka dalam proyek karbon di Banten yang bekerja sama dengan Telkom University Kampus Jakarta. Selama tiga hari dua malam yang tak terasa, kebersamaan di tengah hutan untuk melakukan pengukuran karbon membuat hubungan mereka semakin akrab. Hana kerap meminta bantuan Rozi dalam berbagai urusan proyek, terutama saat di lapangan. Dari sinilah, rasa saling peduli dan ketertarikan di antara keduanya tumbuh semakin kuat.",
     },

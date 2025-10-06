@@ -216,7 +216,7 @@ const PhotoGallerySection = () => {
     "/images/cover-photo-mobile.jpg",
     "/images/gallery-9.jpg",
     "/images/gallery-12.jpg", // ganti
-    "/images/gallery-10.jpg",
+    "/images/gallery-10.JPG",
     "/images/gallery-11.jpg",
   ];
 
