@@ -1,4 +1,3 @@
-import { FormEvent, useRef } from "react";
 import AnimatedDiv from "./AnimatedDiv";
 import useAddComments from "@/hooks/useAddComments";
 

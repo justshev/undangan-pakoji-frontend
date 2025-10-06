@@ -3,7 +3,7 @@
 import useGetComments from "@/hooks/useGetComments";
 
 const CommentList = () => {
-  const { data, isError, isLoading } = useGetComments();
+  const { data, isLoading } = useGetComments();
   const safeData = Array.isArray(data) ? data : [];
   if (safeData.length === 0) {
     return (

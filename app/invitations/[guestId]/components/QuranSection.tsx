@@ -1,5 +1,4 @@
 import AnimatedDiv from "./AnimatedDiv";
-import { Quote } from "lucide-react";
 
 const QuranSection = () => {
   return (
