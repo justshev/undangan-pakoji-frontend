@@ -29,14 +29,6 @@ const MempelaiSection = () => {
         <p>dan</p>
         <p>Ibu Hj. Hefnasari Pane, S.E</p>
       </motion.div>
-      <div className="absolute font-description text-white mx-auto text-center w-full text-xs mt-4 px-2">
-        <h1>Assalamualaikum Wr. Wb </h1>
-        <p>
-          Dengan memohon rahmat dan ridho Allah Subhanahu Wa Ta&apos;ala. Kami
-          mengundang Bapak/Ibu/Saudara/I, untuk menghadiri Akad/Resepsi
-          Pernikahan Kami,
-        </p>
-      </div>
       <motion.div
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}

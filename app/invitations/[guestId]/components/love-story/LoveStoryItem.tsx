@@ -40,7 +40,7 @@ const LoveStoryItem = ({
               {title}
             </h3>
           </div>
-          <p className="text-muted-foreground leading-relaxed">{description}</p>
+          <p className="text-muted-foreground leading-relaxed text-justify">{description}</p>
         </div>
       </div>
     </AnimatedDiv>
