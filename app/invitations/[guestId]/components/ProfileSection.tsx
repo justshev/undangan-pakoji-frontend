@@ -5,10 +5,10 @@ const ProfileSection = () => {
   return (
     <section className="py-20 bg-primary">
       <div className="container mx-auto px-4 text-[#B69F5E]">
-        <AnimatedDiv className="text-center mb-32">
+        <AnimatedDiv className="text-center mb-42">
           <h2 className="text-7xl font-title">H&R</h2>
-          <div className="absolute font-description mx-auto text-center w-full text-xs mt-4 px-2">
-            <h1>Assalamualaikum Wr. Wb </h1>
+          <div className="absolute font-description mx-auto text-center w-full text-sm mt-4 px-2">
+            <h1 className="text-2xl mb-2">Assalamualaikum Wr. Wb </h1>
             <p>
               Dengan memohon rahmat dan ridho Allah Subhanahu Wa Ta&apos;ala.
               Kami mengundang Bapak/Ibu/Saudara/I, untuk menghadiri Akad/Resepsi
