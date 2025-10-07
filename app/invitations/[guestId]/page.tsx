@@ -129,9 +129,9 @@ export default function JavaneseWeddingInvitation() {
             <ProfileSection />
             <MempelaiSection />
             <EventDetailSection />
-            <LoveStory />
+            {/* <LoveStory /> */}
             <Countdown targetDate="2025-11-08T00:00:00" />
-            <PhotoGallerySection />
+            <PhotoGallerySection  />
             <ReservasiSection />
             <CommentList />
             <Footer />
