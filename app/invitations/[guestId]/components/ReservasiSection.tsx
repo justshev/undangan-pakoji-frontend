@@ -50,10 +50,22 @@ const ReservasiSection = ({ guestName }: { guestName: string }) => {
                 <div className="mt-6">
                   <h1>Jumlah Kehadiran</h1>
 
-                  <Tabs>
-                    <TabsList className="w-full">
-                      <TabsTrigger value="1">1</TabsTrigger>
-                      <TabsTrigger value="2">2</TabsTrigger>
+                  <Tabs defaultValue="1">
+                    <TabsList className="w-full bg-neutral-100 p-1 rounded-lg">
+                      <TabsTrigger
+                        value="1"
+                        className="px-3 py-1.5 rounded-md transition-colors text-gray-600 hover:bg-red-400 hover:text-white
+                   data-[state=active]:!bg-red-800 data-[state=active]:!text-white"
+                      >
+                        1
+                      </TabsTrigger>
+                      <TabsTrigger
+                        value="2"
+                        className="px-3 py-1.5 rounded-md transition-colors text-gray-600 hover:bg-red-400 hover:text-white
+                   data-[state=active]:!bg-red-800 data-[state=active]:!text-white"
+                      >
+                        2
+                      </TabsTrigger>
                     </TabsList>
                   </Tabs>
                 </div>
