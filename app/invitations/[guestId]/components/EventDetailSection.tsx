@@ -49,7 +49,7 @@ const EventDetailSection = () => {
 
                   <div className="font-heading  text-black mb-2">
                     <h1>Sabtu, 08 November 2025</h1>
-                    <p>11.00 - 15.00 WIB</p>
+                    <p>11.00 - 14.00 WIB</p>
                     <p>Gedung Manterawu, Telkom University</p>
                     <p className="md:w-3/4 mx-auto text-xs mt-2">
                       Jl. Telekomunikasi No. 1, Bandung Terusan Buahbatu -

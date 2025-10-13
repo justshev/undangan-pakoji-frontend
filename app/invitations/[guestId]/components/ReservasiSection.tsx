@@ -1,7 +1,8 @@
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import AnimatedDiv from "./AnimatedDiv";
 import useAddComments from "@/hooks/useAddComments";
 
-const ReservasiSection = () => {
+const ReservasiSection = ({ guestName }: { guestName: string }) => {
   const { nameRef, messageRef, isPending, storeData } = useAddComments();
   return (
     <section className="py-20 bg-muted/30 relative">
@@ -30,13 +31,40 @@ const ReservasiSection = () => {
                 <label className="block text-sm font-medium mb-2">
                   Nama Lengkap
                 </label>
-                <input
+                <div className="w-full p-3 border border-border rounded-lg bg-input">
+                  <p>{guestName}</p>
+                </div>
+
+                <div className="mt-6">
+                  <h1>Konfirmasi Kehadiran</h1>
+                  <select
+                    name=""
+                    id=""
+                    className="w-full p-3 border border-border rounded-lg bg-input"
+                  >
+                    <option value="">Hadir</option>
+                    <option value="">Tidak Hadir</option>
+                  </select>
+                </div>
+
+                <div className="mt-6">
+                  <h1>Jumlah Kehadiran</h1>
+
+                  <Tabs>
+                    <TabsList className="w-full">
+                      <TabsTrigger value="1">1</TabsTrigger>
+                      <TabsTrigger value="2">2</TabsTrigger>
+                    </TabsList>
+                  </Tabs>
+                </div>
+
+                {/* <input
                   ref={nameRef}
                   type="text"
                   required
                   placeholder="Masukkan nama lengkap Anda"
                   className="w-full p-3 border border-border rounded-lg bg-input focus:ring-2 focus:ring-ring focus:border-transparent"
-                />
+                /> */}
               </div>
 
               <div>
