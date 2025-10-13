@@ -12,9 +12,12 @@ import {
 } from "@/components/ui/table";
 import Link from "next/link";
 import { useState } from "react";
+import CopyButton from "./CopyButton";
 
 const AttendanceTable = ({ data }: any) => {
   const [currentPage, setCurrentPage] = useState(1);
+
+  const FRONTEND_URL = process.env.NEXT_PUBLIC_FRONTEND_URL;
   const itemsPerPage = 10;
   const totalPages = Math.ceil(data.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -30,9 +33,9 @@ const AttendanceTable = ({ data }: any) => {
   return (
     <Card>
       <div className="rounded-md border">
-        <Table className="zebra-stripes ">
+        <Table className="zebra-stripes">
           <TableHeader>
-            <TableRow className="">
+            <TableRow>
               <TableHead className="font-semibold">ID</TableHead>
               <TableHead className="font-semibold">Nama</TableHead>
               <TableHead className="font-semibold">
@@ -41,8 +44,10 @@ const AttendanceTable = ({ data }: any) => {
               <TableHead className="font-semibold">Status</TableHead>
               <TableHead className="font-semibold">Waktu Datang</TableHead>
               <TableHead className="font-semibold">Link Undangan</TableHead>
+              <TableHead className="font-semibold">Copy Undangan</TableHead>
             </TableRow>
           </TableHeader>
+
           <TableBody>
             {currentData.map((item: any, idx: number) => (
               <TableRow key={idx}>
@@ -71,6 +76,12 @@ const AttendanceTable = ({ data }: any) => {
                   >
                     Link
                   </Link>
+                </TableCell>
+                <TableCell>
+                  <CopyButton
+                    link={`${FRONTEND_URL}/invitations/${item.id}`}
+                    idx={idx}
+                  />
                 </TableCell>
               </TableRow>
             ))}

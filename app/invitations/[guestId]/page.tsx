@@ -11,7 +11,6 @@ import EventDetailSection from "./components/EventDetailSection";
 import PhotoGallerySection from "./components/PhotoGallerySection";
 import ReservasiSection from "./components/ReservasiSection";
 import WeddingHeroSlideshow from "./components/SliderPhotoSection";
-import LoveStory from "./components/love-story/LoveStory";
 import Footer from "./components/Footer";
 import CommentList from "./components/CommentSection";
 import { Countdown } from "./components/Countdown";
@@ -131,8 +130,8 @@ export default function JavaneseWeddingInvitation() {
             <EventDetailSection />
             {/* <LoveStory /> */}
             <Countdown targetDate="2025-11-08T00:00:00" />
-            <PhotoGallerySection  />
-            <ReservasiSection />
+            <PhotoGallerySection />
+            <ReservasiSection guestName={guestName} />
             <CommentList />
             <Footer />
           </div>
