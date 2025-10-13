@@ -277,17 +277,16 @@ const PhotoGallerySection = () => {
         </p>
       </AnimatedDiv>
 
-      {/* ====== Image Carousel (autoplay 3s, manual, drag) ====== */}
       <AnimatedDiv className="max-w-6xl mx-auto ">
         <section className="bg-muted/30 relative">
           <div className="md:flex items-center justify-center gap-3 mt-8 block space-y-2">
             <img
-              src="/images/photo_name.jpg"
+              src="/images/cover-photo.jpg"
               alt="Foto 1"
-              className="w-128 rounded-lg "
+              className="w-128 rounded-lg"
             />
             <img
-              src="/images/gallery-10.JPG"
+              src="/images/gallery-3.jpg"
               alt="Foto 2"
               className="w-128 rounded-lg "
             />
