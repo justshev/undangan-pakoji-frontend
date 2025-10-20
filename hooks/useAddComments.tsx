@@ -1,48 +1,42 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import axios from "axios";
-import React, { useRef } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useFormik, FormikProps } from "formik";
+import { axiosInstance } from "@/lib/axios";
 
-const useAddComments = () => {
+export interface CommentValues {
+  name: string;
+  message: string;
+}
+
+const useAddComments = (guestName: string) => {
   const queryClient = useQueryClient();
+  const formik: FormikProps<CommentValues> = useFormik({
+    initialValues: {
+      name: guestName,
+      message: "",
+    },
+    onSubmit: async (values) => {
+      mutate(values);
+    },
+  });
 
-  const nameRef = useRef<HTMLInputElement>(null);
-  const messageRef = useRef<HTMLTextAreaElement>(null);
+  const { mutate, isPending } = useMutation({
+    mutationFn: async (values: CommentValues) => {
+      try {
+        const response = await axiosInstance.post(`/api/comment`, values);
 
-  const storeData = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
-    const name = nameRef.current?.value;
-    const message = messageRef.current?.value;
-    const response = await axios.post(`${BACKEND_URL}/api/comment`, {
-      name,
-      message,
-    });
-
-    if (name?.trim() === "" || message?.trim() === "") {
-      return alert("Nama atau pesan tidak bisa kosong!");
-    }
-
-    if (!response) {
-      return alert("Gagal menambahkan pesan");
-    }
-
-    return response.data;
-  };
-
-  const { data, isPending } = useMutation({
-    mutationFn: storeData,
+        return response.data;
+      } catch (err) {
+        console.log(err);
+      }
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["comments"] });
     },
   });
 
   return {
-    nameRef,
-    messageRef,
-    data,
+    formik,
     isPending,
-    storeData,
   };
 };
 

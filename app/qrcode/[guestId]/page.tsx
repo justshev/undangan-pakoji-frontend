@@ -32,12 +32,13 @@ export default function QRCodePage() {
           className="w-full max-w-sm rounded-lg border p-6 shadow-sm"
         >
           <h1 className="mb-4 text-lg font-semibold">Masukkan Passcode</h1>
+          <p className="text-xs mb-4">Passcode akan diberikan di tempat ketika acara</p>
           <input
             type="password"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             className="w-full rounded-md border px-3 py-2 focus:outline-none focus:ring"
-            placeholder="Contoh: 1234"
+            placeholder="Passcode..."
             required
           />
           {error && (

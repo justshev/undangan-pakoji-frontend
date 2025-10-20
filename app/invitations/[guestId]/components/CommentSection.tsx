@@ -1,10 +1,12 @@
 "use client";
 
 import useGetComments from "@/hooks/useGetComments";
+import GetTicket from "./GetTicket";
 
 const CommentList = () => {
   const { data, isLoading } = useGetComments();
   const safeData = Array.isArray(data) ? data : [];
+
   if (safeData.length === 0) {
     return (
       <section className="bg-pink-50 py-12 px-4 text-center font-description">
@@ -12,27 +14,30 @@ const CommentList = () => {
           Doa & Pesan
         </h2>
         <p className="text-muted-foreground">
-          Belum ada pesan. Jadilah yang pertama memberikan doa ✨
+          Belum ada pesan. Jadilah yang pertama memberikan pesan ✨
         </p>
       </section>
     );
   }
+
   return (
     <section className="bg-pink-50 pb-8 px-4 font-description relative">
       <div
         className="
     absolute inset-0 pointer-events-none opacity-20
-    bg-[url('/images/bg-batik.jpg')] bg-repeat bg-cover
+    bg-[url('/images/bg-batik.jpg')] bg-repeat bg-contain
   "
       />
 
-      <div className="max-w-2xl mx-auto space-y-6">
+      <GetTicket />
+
+      <div className="max-w-2xl mx-auto space-y-6 flex flex-col-reverse">
         {isLoading && <div>Loading...</div>}
         {!isLoading &&
           safeData.map((comment) => (
             <div
               key={comment.id}
-              className="bg-white/80 backdrop-blur-sm rounded-lg shadow p-6 text-left border border-pink-100"
+              className="bg-white/80 backdrop-blur-sm rounded-lg shadow p-6 text-left border border-pink-100 mb-2"
             >
               <h3 className="font-semibold text-primary mb-2">
                 {comment.name}

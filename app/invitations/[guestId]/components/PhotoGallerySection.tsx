@@ -265,7 +265,12 @@ import AnimatedDiv from "./AnimatedDiv";
 const PhotoGallerySection = () => {
   return (
     <div className="container mx-auto px-4 relative">
-      <div className="absolute inset-0 pointer-events-none opacity-20 bg-[url('/images/bg-batik.jpg')] bg-repeat bg-cover" />
+      <div
+        className="
+    absolute inset-0 pointer-events-none opacity-20
+    bg-[url('/images/bg-batik.jpg')] bg-repeat bg-contain
+  "
+      />
 
       <AnimatedDiv className="text-center">
         <h2 className="font-title text-4xl font-bold text-primary mb-4">
