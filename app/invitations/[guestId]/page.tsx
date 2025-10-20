@@ -3,17 +3,18 @@
 import type React from "react";
 
 import { useState, useEffect, useRef } from "react";
-import { useParams, useRouter } from "next/navigation";
 import CoverUndangan from "./components/CoverUndangan";
 import MempelaiSection from "./components/MempelaiSection";
 import ProfileSection from "./components/ProfileSection";
 import EventDetailSection from "./components/EventDetailSection";
 import PhotoGallerySection from "./components/PhotoGallerySection";
-import ReservasiSection from "./components/ReservasiSection";
 import WeddingHeroSlideshow from "./components/SliderPhotoSection";
 import Footer from "./components/Footer";
 import CommentList from "./components/CommentSection";
 import { Countdown } from "./components/Countdown";
+import useGetGuest from "@/hooks/useGetGuest";
+import ReservasiSection from "./components/ReservasiSection";
+import LoveStory from "./components/love-story/LoveStory";
 
 export default function JavaneseWeddingInvitation() {
   const weddingPhotos = [
@@ -21,45 +22,13 @@ export default function JavaneseWeddingInvitation() {
     "/images/slider/kak-hana.jpg",
     "/images/slider/pak-rozi.jpg",
   ];
-  const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
   const audioElementRef = useRef<HTMLAudioElement>(null);
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
 
-  const params = useParams();
-  const { guestId } = params as { guestId: string };
-
   const [isInvitationOpen, setIsInvitationOpen] = useState(false);
-  const [guestName, setGuestName] = useState("");
-  const router = useRouter();
-
-  useEffect(() => {
-    const handleCheckGuest = async () => {
-      try {
-        const response = await fetch(`${BACKEND_URL}/api/guests/${guestId}`, {
-          method: "GET",
-          headers: { "Content-Type": "application/json" },
-          cache: "no-store",
-        });
-
-        if (!response.ok) {
-          return router.push(`/invitations/${guestId}/not-found`);
-        }
-
-        const { guest } = await response.json();
-        if (!guest) {
-          return router.push(`/invitations/${guestId}/not-found`);
-        }
-
-        setGuestName(guest.name);
-      } catch {
-        router.push(`/invitations/${guestId}/not-found`);
-      }
-    };
-
-    if (BACKEND_URL && guestId) handleCheckGuest();
-  }, [BACKEND_URL, guestId, router]);
+  const { data } = useGetGuest();
 
   const openInvitation = async () => {
     setIsInvitationOpen(true);
@@ -108,7 +77,7 @@ export default function JavaneseWeddingInvitation() {
         preload="auto"
       />
       {!isInvitationOpen && (
-        <CoverUndangan guestName={guestName} openInvitation={openInvitation} />
+        <CoverUndangan guestName={data?.name} openInvitation={openInvitation} />
       )}
       {isInvitationOpen && (
         <>
@@ -128,10 +97,10 @@ export default function JavaneseWeddingInvitation() {
             <ProfileSection />
             <MempelaiSection />
             <EventDetailSection />
-            {/* <LoveStory /> */}
+            <LoveStory />
             <Countdown targetDate="2025-11-08T00:00:00" />
             <PhotoGallerySection />
-            <ReservasiSection guestName={guestName} />
+            <ReservasiSection guestName={data?.name} />
             <CommentList />
             <Footer />
           </div>

@@ -38,9 +38,8 @@ const AttendanceTable = ({ data }: any) => {
             <TableRow>
               <TableHead className="font-semibold">ID</TableHead>
               <TableHead className="font-semibold">Nama</TableHead>
-              <TableHead className="font-semibold">
-                Jumlah Dikonfirmasi
-              </TableHead>
+              <TableHead className="font-semibold">Undangan Awal</TableHead>
+              <TableHead>Jumlah Dikonfirmasi</TableHead>
               <TableHead className="font-semibold">Status</TableHead>
               <TableHead className="font-semibold">Waktu Datang</TableHead>
               <TableHead className="font-semibold">Link Undangan</TableHead>
@@ -54,6 +53,7 @@ const AttendanceTable = ({ data }: any) => {
                 <TableCell>{idx + 1}</TableCell>
                 <TableCell>{item.name}</TableCell>
                 <TableCell>{item.totalInvited}</TableCell>
+                <TableCell>{item.confirmedGuests}</TableCell>
                 <TableCell>
                   <Badge
                     className={`${
@@ -88,6 +88,7 @@ const AttendanceTable = ({ data }: any) => {
           </TableBody>
         </Table>
       </div>
+
       <div className="flex items-center justify-between px-4 py-3">
         <Button
           variant="outline"

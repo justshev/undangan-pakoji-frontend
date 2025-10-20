@@ -1,9 +1,9 @@
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import AnimatedDiv from "./AnimatedDiv";
 import useAddComments from "@/hooks/useAddComments";
 
 const ReservasiSection = ({ guestName }: { guestName: string }) => {
-  const { nameRef, messageRef, isPending, storeData } = useAddComments();
+  const { isPending, formik } = useAddComments(guestName);
+
   return (
     <section className="py-20 bg-muted/30 relative">
       <div className="container mx-auto px-4">
@@ -26,7 +26,7 @@ const ReservasiSection = ({ guestName }: { guestName: string }) => {
 
         <AnimatedDiv className="max-w-2xl font-description mx-auto bg-card border border-primary/20 shadow-lg rounded-lg">
           <div className="p-8">
-            <form className="space-y-6" onSubmit={storeData}>
+            <form className="space-y-6" onSubmit={formik.handleSubmit}>
               <div>
                 <label className="block text-sm font-medium mb-2">
                   Nama Lengkap
@@ -35,22 +35,36 @@ const ReservasiSection = ({ guestName }: { guestName: string }) => {
                   <p>{guestName}</p>
                 </div>
 
-                <div className="mt-6">
+                {/* <div className="mt-6">
                   <h1>Konfirmasi Kehadiran</h1>
-                  <select
-                    name=""
-                    id=""
-                    className="w-full p-3 border border-border rounded-lg bg-input"
+                  <Select
+                    name="kehadiran"
+                    value={formik.values.kehadiran}
+                    defaultValue="hadir"
+                    onValueChange={(newValue) =>
+                      formik.setFieldValue("kehadiran", newValue)
+                    }
                   >
-                    <option value="">Hadir</option>
-                    <option value="">Tidak Hadir</option>
-                  </select>
+                    <SelectTrigger className="w-full">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="hadir">Hadir</SelectItem>
+                      <SelectItem value="tidak_hadir">Tidak Hadir</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
 
                 <div className="mt-6">
                   <h1>Jumlah Kehadiran</h1>
 
-                  <Tabs defaultValue="1">
+                  <Tabs
+                    defaultValue="1"
+                    onValueChange={(value) =>
+                      formik.setFieldValue("jumlah_kehadiran", value)
+                    }
+                    value={formik.values.jumlah_kehadiran}
+                  >
                     <TabsList className="w-full bg-neutral-100 p-1 rounded-lg">
                       <TabsTrigger
                         value="1"
@@ -68,7 +82,7 @@ const ReservasiSection = ({ guestName }: { guestName: string }) => {
                       </TabsTrigger>
                     </TabsList>
                   </Tabs>
-                </div>
+                </div> */}
 
                 {/* <input
                   ref={nameRef}
@@ -84,7 +98,9 @@ const ReservasiSection = ({ guestName }: { guestName: string }) => {
                   Pesan & Doa
                 </label>
                 <textarea
-                  ref={messageRef}
+                  name="message"
+                  value={formik.values.message}
+                  onChange={formik.handleChange}
                   placeholder="Tuliskan pesan dan doa untuk mempelai..."
                   rows={4}
                   className="w-full p-3 border border-border rounded-lg bg-input focus:ring-2 focus:ring-ring focus:border-transparent resize-none"
@@ -97,7 +113,7 @@ const ReservasiSection = ({ guestName }: { guestName: string }) => {
                   isPending ? "bg-primary/30" : ""
                 }  text-primary-foreground font-medium py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300`}
               >
-                Kirim Pesan
+                Konfirmasi
               </button>
             </form>
           </div>

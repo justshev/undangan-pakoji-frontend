@@ -1,88 +1,72 @@
 "use client";
-import { useState, useEffect } from "react";
-import {
-  useRouter,
-  useParams,
-  useSearchParams,
-  usePathname,
-} from "next/navigation";
+
 import { Card } from "@/components/ui/card";
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+import useGetGuest from "@/hooks/useGetGuest";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import useAddConfirmedGuest from "@/hooks/useAddInvited";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+
 export default function ConfirmPage() {
-  const [count, setCount] = useState<null | number>(null);
-  const [guestName, setGuestName] = useState<string | null>(null);
   const router = useRouter();
-  const params = useParams();
-  const qs = useSearchParams();
-  const pathname = usePathname();
-  const guestIdFromPath = (params?.guestId ?? params?.id) as string | undefined;
-  const guestId = guestIdFromPath ?? (qs.get("guestId") || undefined);
+
+  const {
+    formik,
+    readyToRedirect,
+    data: confirmData,
+    guestId,
+  } = useAddConfirmedGuest();
 
   useEffect(() => {
-    console.log({
-      pathname,
-      params,
-      guestIdFromPath,
-      guestId,
-      qs: qs.toString(),
-    });
-  }, [pathname, params, qs, guestIdFromPath, guestId]);
-
-  const fetchGuestName = async (id: string) => {
-    const res = await fetch(`${BACKEND_URL}/api/guests/${id}`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    });
-    const { guest } = await res.json();
-
-    setGuestName(guest?.name);
-  };
-
-  fetchGuestName(guestId as string);
-
-  const handleSubmit = async () => {
-    if (!guestId) {
-      alert("Guest ID tidak ditemukan. Pastikan URL berupa /confirm/<ID>.");
-      return;
+    if (readyToRedirect) {
+      router.push(`/qrcode/${guestId}?token=${confirmData.qrCodeToken}`);
     }
-
-    if (!count || count > 4) {
-      alert("Kehadiran hanya boleh maksimal berjumlah 4 orang.");
-      return;
-    }
-    const res = await fetch(`${BACKEND_URL}/api/guests/confirm/${guestId}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ confirmedGuests: count }),
-    });
-    const data = await res.json();
-    if (data.qrCodeToken)
-      router.push(`/qrcode/${guestId}?token=${data.qrCodeToken}`);
-  };
+  }, [readyToRedirect]);
+  const { data } = useGetGuest();
 
   return (
-    <div className="flex items-center justify-center min-h-screen ">
-      <Card className="text-center p-6 bg-card/80">
-        <h1 className="text-xl font-bold">Konfirmasi Kehadiran</h1>
+    <div className="flex items-center justify-center min-h-screen  ">
+      <Card className="text-center p-6 bg-card/80 font-description">
+        <h1 className="text-xl font-bold text-black">Konfirmasi Kehadiran</h1>
         <p className="text-sm text-gray-500">
-          Guest ID: {guestId ?? "(belum terdeteksi)"}
+          *Notes: 1 Tiket hanya untuk maksimal 2 orang
         </p>
-        <p className="text-sm text-gray-500">Atas nama: {guestName}</p>
+        <p className="text-sm text-gray-500">Atas nama: {data?.name}</p>
 
-        <input
-          type="number"
-          min={1}
-          value={count ? count : ""}
-          onChange={(e) => setCount(parseInt(e.target.value))}
-          placeholder="Masukkan jumlah kehadiran"
-          className="border p-2 mt-4"
-        />
-        <button
-          onClick={handleSubmit}
-          className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
-        >
-          Konfirmasi
-        </button>
+        <form className="mt-2" onSubmit={formik.handleSubmit}>
+          <h1 className="text-start mb-2">Masukkan Jumlah Kehadiran</h1>
+          <Tabs
+            defaultValue="1"
+            onValueChange={(value) =>
+              formik.setFieldValue("confirmedGuests", value)
+            }
+            value={formik.values.confirmedGuests}
+          >
+            <TabsList className="w-full bg-neutral-100 p-1 rounded-lg">
+              <TabsTrigger
+                value="1"
+                className="px-3 py-1.5 rounded-md transition-colors text-gray-600 hover:bg-red-400 hover:text-white
+                   data-[state=active]:!bg-red-800 data-[state=active]:!text-white"
+              >
+                1
+              </TabsTrigger>
+              <TabsTrigger
+                value="2"
+                className="px-3 py-1.5 rounded-md transition-colors text-gray-600 hover:bg-red-400 hover:text-white
+                   data-[state=active]:!bg-red-800 data-[state=active]:!text-white"
+              >
+                2
+              </TabsTrigger>
+            </TabsList>
+          </Tabs>
+          <button
+            // onClick={handleSubmit}
+            className="mt-4 bg-primary text-white px-4 py-2 rounded w-full"
+            type="submit"
+          >
+            Konfirmasi
+          </button>
+        </form>
       </Card>
     </div>
   );

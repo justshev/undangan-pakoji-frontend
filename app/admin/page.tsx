@@ -1,29 +1,29 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { JSX, useEffect, useState } from "react";
+import { JSX } from "react";
 import InfoCard from "./components/InfoCard";
 import { User, UserCheck, UserX } from "lucide-react";
 import AttendanceTable from "./components/AttendanceTable";
-
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+import useGetGuests from "@/hooks/useGetGuests";
 
 export default function AdminPage() {
-  const [guests, setGuests] = useState([]);
+  const { data, isLoading } = useGetGuests();
+  const safeData = Array.isArray(data) ? data : [];
 
-  useEffect(() => {
-    fetch(`${BACKEND_URL}/api/guests`)
-      .then((res) => res.json())
-      .then(setGuests);
-  }, []);
-
-  const arrivalTimeLength = guests?.filter(
+  const arrivalTimeLength = safeData?.filter(
     (item: any) => item.arrivalTime
   ).length;
 
-  const amountOfArrived = ((arrivalTimeLength / guests.length) * 100).toFixed();
-  const notArrivedLength = guests.length - arrivalTimeLength;
-  const amountNotArrived = ((notArrivedLength / guests.length) * 100).toFixed();
+  const amountOfArrived = (
+    (arrivalTimeLength / safeData.length) *
+    100
+  ).toFixed();
+  const notArrivedLength = safeData.length - arrivalTimeLength;
+  const amountNotArrived = (
+    (notArrivedLength / safeData.length) *
+    100
+  ).toFixed();
 
   type InfoCardContent = {
     title: string;
@@ -49,7 +49,7 @@ export default function AdminPage() {
       title: "Total Tamu",
       icon: <User className="w-5 h-5 text-blue-600" />,
       description: "Terdaftar dalam sistem",
-      amount: guests.length,
+      amount: safeData.length,
     },
   ];
 
@@ -66,7 +66,7 @@ export default function AdminPage() {
           ))}
         </div>
       </header>
-      <AttendanceTable data={guests} />
+      {isLoading ? <p>Loading...</p> : <AttendanceTable data={safeData} />}
     </div>
   );
 }

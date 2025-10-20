@@ -1,7 +1,7 @@
 import type React from "react";
 import type { Metadata } from "next";
 import "./globals.css";
-
+import QueryProvider from "../invitations/[guestId]/components/QueryProvider";
 
 export const metadata: Metadata = {
   title: "Undangan Pernikahan - Javanese Wedding Invitation",
@@ -13,5 +13,9 @@ export default function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <div className="dark">{children}</div>;
+  return (
+    <div className="dark">
+      <QueryProvider>{children}</QueryProvider>
+    </div>
+  );
 }
