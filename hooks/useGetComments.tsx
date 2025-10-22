@@ -1,22 +1,17 @@
+// hooks/useGetComments.ts
 import { axiosInstance } from "@/lib/axios";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, UseQueryResult } from "@tanstack/react-query";
 
-const useGetComments = () => {
-  const getComment = async () => {
+const useGetComments = <T = unknown>(): UseQueryResult<T> => {
+  const getComments = async (): Promise<T> => {
     const response = await axiosInstance.get("/api/comments");
-    return response.data;
+    return response.data as T;
   };
 
-  const { data, isLoading, isError } = useQuery({
+  return useQuery<T>({
     queryKey: ["comments"],
-    queryFn: getComment,
+    queryFn: getComments,
   });
-
-  return {
-    data,
-    isLoading,
-    isError,
-  };
 };
 
 export default useGetComments;
