@@ -17,7 +17,7 @@ Assalamu'alaikum Warahmatullahi Wabarakatuh,
 
 Dengan memohon Rahmat Allah Subhanahu wa Ta'ala, dan tanpa mengurangi rasa hormat kami. Melalui media sosial ini, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk hadir di acara pernikahan kami yang Insya Allah akan dilaksanakan pada:
 
-RESEPSI
+*RESEPSI*
 🗓 Sabtu, 8 November 2025
 ⏰11.00 - 14.00 WIB 
 📍Gedung Manterawu Telkom University 
@@ -26,12 +26,12 @@ Silahkan klik tautan di bawah ini untuk melihat undangan lengkap dan detil lokas
 
 ${link}
 
-Mohon kesediaan untuk mengisi konfirmasi kehadiran pada form RSVP, untuk medapat kode QR sebagai akses masuk.
+*Mohon kesediaan untuk mengisi konfirmasi kehadiran pada form RSVP, untuk medapat kode QR sebagai akses masuk.*
 
 Terimakasih kami sampaikan atas perhatiannya. Kami sangat menghargai kerjasama Anda untuk tidak meneruskan pesan undangan ini kepada pihak lain.
 
 Kami yang berbahagia,
-Hana & Rozi
+*Hana & Rozi*
 Beserta Keluarga Dr. H. Erwin Budi Setiawan, S.Si., M.T & H. Toni Surizi, S.T`);
       setIsCopied(true);
       setTimeout(() => setIsCopied(false), 1200);
