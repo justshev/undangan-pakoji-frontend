@@ -11,26 +11,28 @@ const CopyButton = ({ link, name, idx }: CopyButtonProps) => {
 
   async function handleCopyClick() {
     try {
-      await navigator.clipboard.writeText(`Assalamu’alaikum, ${name} 🤍
+      await navigator.clipboard.writeText(`Dear/Yth, ${name}
 
-Dengan penuh rasa syukur, kami bermaksud mengundang ${name} untuk hadir dan memberikan doa restu pada hari bahagia kami:
+Assalamu'alaikum Warahmatullahi Wabarakatuh,
 
+Dengan memohon Rahmat Allah Subhanahu wa Ta'ala, dan tanpa mengurangi rasa hormat kami. Melalui media sosial ini, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk hadir di acara pernikahan kami yang Insya Allah akan dilaksanakan pada:
+
+RESEPSI
+🗓 Sabtu, 8 November 2025
+⏰11.00 - 14.00 WIB 
+📍Gedung Manterawu Telkom University 
+
+Silahkan klik tautan di bawah ini untuk melihat undangan lengkap dan detil lokasi:
+
+${link}
+
+Mohon kesediaan untuk mengisi konfirmasi kehadiran pada form RSVP, untuk medapat kode QR sebagai akses masuk.
+
+Terimakasih kami sampaikan atas perhatiannya. Kami sangat menghargai kerjasama Anda untuk tidak meneruskan pesan undangan ini kepada pihak lain.
+
+Kami yang berbahagia,
 Hana & Rozi
-
-🗓️ Sabtu, 8 November 2025
-📍 Gedung Manterawu Telkom University, Bandung
-
-Merupakan kebahagiaan besar bagi kami apabila ${name} berkenan hadir dalam acara kami.
-
-Undangan lengkap dapat dilihat melalui tautan berikut:
-👉 ${link}
-
-Terima kasih atas doa dan perhatiannya 🌷
-
-Wassalamu’alaikum Warahmatullahi Wabarakatuh.
-
-Hormat kami,
-Hana & Rozi`);
+Beserta Keluarga Dr. H. Erwin Budi Setiawan, S.Si., M.T & H. Toni Surizi, S.T`);
       setIsCopied(true);
       setTimeout(() => setIsCopied(false), 1200);
     } catch (err) {
