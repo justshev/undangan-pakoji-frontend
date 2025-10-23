@@ -3,18 +3,37 @@ import { useState } from "react";
 interface CopyButtonProps {
   link: string;
   idx: number;
+  name: string;
 }
 
-const CopyButton = ({ link, idx }: CopyButtonProps) => {
+const CopyButton = ({ link, name, idx }: CopyButtonProps) => {
   const [isCopied, setIsCopied] = useState(false);
 
   async function handleCopyClick() {
     try {
-      await navigator.clipboard.writeText(link);
+      await navigator.clipboard.writeText(`Assalamu’alaikum, ${name} 🤍
+
+Dengan penuh rasa syukur, kami bermaksud mengundang ${name} untuk hadir dan memberikan doa restu pada hari bahagia kami:
+
+Hana & Rozi
+
+🗓️ Sabtu, 8 November 2025
+📍 Gedung Manterawu Telkom University, Bandung
+
+Merupakan kebahagiaan besar bagi kami apabila ${name} berkenan hadir dalam acara kami.
+
+Undangan lengkap dapat dilihat melalui tautan berikut:
+👉 ${link}
+
+Terima kasih atas doa dan perhatiannya 🌷
+
+Wassalamu’alaikum Warahmatullahi Wabarakatuh.
+
+Hormat kami,
+Hana & Rozi`);
       setIsCopied(true);
       setTimeout(() => setIsCopied(false), 1200);
     } catch (err) {
-      // fallback untuk browser lama
       const fallbackTextarea = document.createElement("textarea");
       fallbackTextarea.value = link;
       document.body.appendChild(fallbackTextarea);

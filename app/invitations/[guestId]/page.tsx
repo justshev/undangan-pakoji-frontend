@@ -14,7 +14,6 @@ import CommentList from "./components/CommentSection";
 import { Countdown } from "./components/Countdown";
 import useGetGuest from "@/hooks/useGetGuest";
 import ReservasiSection from "./components/ReservasiSection";
-import LoveStory from "./components/love-story/LoveStory";
 
 export default function JavaneseWeddingInvitation() {
   const weddingPhotos = [
