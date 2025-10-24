@@ -30,7 +30,14 @@ const useAddComments = (guestName: string) => {
       }
     },
     onSuccess: () => {
+      if (formik.values.message === "") {
+        alert("Ucapan tidak boleh kosong!");
+        return;
+      }
+
       queryClient.invalidateQueries({ queryKey: ["comments"] });
+      formik.handleReset();
+      alert("Ucapan berhasil dikirim, terima kasih!");
     },
   });
 
