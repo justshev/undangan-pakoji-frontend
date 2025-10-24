@@ -286,7 +286,7 @@ const PhotoGallerySection = () => {
         <section className="bg-muted/30 relative">
           <div className="md:flex items-center justify-center gap-3 mt-8 block space-y-2">
             <img
-              src="/images/cover-photo.jpg"
+              src="/images/gallery-white.jpg"
               alt="Foto 1"
               className="w-128 rounded-lg"
             />
