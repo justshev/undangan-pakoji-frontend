@@ -31,6 +31,8 @@ const useAddComments = (guestName: string) => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["comments"] });
+      formik.handleReset();
+      alert("Ucapan berhasil dikirim, terima kasih!");
     },
   });
 
