@@ -11,7 +11,7 @@ const CopyButton = ({ link, name, idx }: CopyButtonProps) => {
 
   async function handleCopyClick() {
     try {
-      await navigator.clipboard.writeText(`*Dear/Yth, ${name}*
+      await navigator.clipboard.writeText(`*Dear/Yth, Bapak/Ibu ${name}*
 
 Assalamu'alaikum Warahmatullahi Wabarakatuh,
 
