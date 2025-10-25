@@ -13,60 +13,61 @@ export default function QRCodePage() {
   const [authorized, setAuthorized] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
 
-    if (input === PASSCODE) {
-      setAuthorized(true);
-      setError(null);
-    } else {
-      setError("Passcode salah");
-    }
-  };
+  //   if (input === PASSCODE) {
+  //     setAuthorized(true);
+  //     setError(null);
+  //   } else {
+  //     setError("Passcode salah");
+  //   }
+  // };
 
-  if (!authorized) {
-    return (
-      <div className="flex min-h-[60vh] items-center justify-center p-6">
-        <form
-          onSubmit={handleSubmit}
-          className="w-full max-w-sm rounded-lg border p-6 shadow-sm"
-        >
-          <h1 className="mb-4 text-lg font-semibold">Masukkan Passcode</h1>
-          <p className="text-xs mb-4">Passcode akan diberikan di tempat ketika acara</p>
-          <input
-            type="password"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            className="w-full rounded-md border px-3 py-2 focus:outline-none focus:ring"
-            placeholder="Passcode..."
-            required
-          />
-          {error && (
-            <p className="mt-2 text-sm text-red-600" role="alert">
-              {error}
-            </p>
-          )}
-          <button
-            type="submit"
-            className="mt-4 w-full rounded-md bg-black px-4 py-2 text-white hover:opacity-90"
-          >
-            Lanjutkan
-          </button>
-        </form>
-      </div>
-    );
-  }
+  // if (!authorized) {
+  //   return (
+  //     <div className="flex min-h-[60vh] items-center justify-center p-6">
+  //       <form
+  //         onSubmit={handleSubmit}
+  //         className="w-full max-w-sm rounded-lg border p-6 shadow-sm"
+  //       >
+  //         <h1 className="mb-4 text-lg font-semibold">Masukkan Passcode</h1>
+  //         <p className="text-xs mb-4">Passcode akan diberikan di tempat ketika acara</p>
+  //         <input
+  //           type="password"
+  //           value={input}
+  //           onChange={(e) => setInput(e.target.value)}
+  //           className="w-full rounded-md border px-3 py-2 focus:outline-none focus:ring"
+  //           placeholder="Passcode..."
+  //           required
+  //         />
+  //         {error && (
+  //           <p className="mt-2 text-sm text-red-600" role="alert">
+  //             {error}
+  //           </p>
+  //         )}
+  //         <button
+  //           type="submit"
+  //           className="mt-4 w-full rounded-md bg-black px-4 py-2 text-white hover:opacity-90"
+  //         >
+  //           Lanjutkan
+  //         </button>
+  //       </form>
+  //     </div>
+  //   );
+  // }
 
   if (!token) return <p>QR Code tidak ditemukan</p>;
 
   return (
     <div className="flex flex-col items-center p-6">
       <h1 className="text-xl font-bold mb-4">QR Code Kehadiran</h1>
+      <p className="mb-6">Dengan anda hadir di tempat, silakan  tunjukkan QR Code ini:</p>
       <QRCodeCanvas
         value={`${BACKEND_URL}/api/guests/validate/${token}`}
         size={200}
       />
-      <p className="mt-4">Tunjukkan QR ini saat check-in</p>
+      <p className="mt-4">Tunjukkan QR ini saat anda hadir di tempat</p>
     </div>
   );
 }

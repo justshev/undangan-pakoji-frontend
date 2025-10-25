@@ -113,7 +113,7 @@ const ReservasiSection = ({ guestName }: { guestName: string }) => {
                   isPending ? "bg-primary/30" : ""
                 }  text-primary-foreground font-medium py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300`}
               >
-                Konfirmasi
+                Kirim Pesan
               </button>
             </form>
           </div>

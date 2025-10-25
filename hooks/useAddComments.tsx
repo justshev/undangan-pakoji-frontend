@@ -30,7 +30,7 @@ const useAddComments = (guestName: string) => {
       }
     },
     onSuccess: () => {
-      if (formik.values.message === "") {
+      if (formik.values.message.trim() === "") {
         alert("Ucapan tidak boleh kosong!");
         return;
       }
