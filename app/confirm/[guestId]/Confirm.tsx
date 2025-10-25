@@ -28,9 +28,6 @@ export default function ConfirmPage() {
     <div className="flex items-center justify-center min-h-screen  ">
       <Card className="text-center p-6 bg-card/80 font-description">
         <h1 className="text-xl font-bold text-black">Konfirmasi Kehadiran</h1>
-        <p className="text-sm text-gray-500">
-          *Notes: 1 Tiket hanya untuk maksimal 2 orang
-        </p>
         <p className="text-sm text-gray-500">Atas nama: {data?.name}</p>
 
         <form className="mt-2" onSubmit={formik.handleSubmit}>
