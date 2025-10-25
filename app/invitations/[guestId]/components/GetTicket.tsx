@@ -7,14 +7,16 @@ const GetTicket = () => {
 
   return (
     <div className="text-center">
-      <h1 className="font-title text-primary text-3xl pt-8">Ambil Ticket</h1>
+      <h1 className="font-title text-primary text-3xl pt-8">
+        Konfirmasi Kehadiran
+      </h1>
       <p className="font-description text-black">
-        Silakan ambil tiket Anda di bawah ini:
+        Silakan konfirmasi kehadiran Anda di bawah ini:
       </p>
       <AnimatedDiv className="max-w-2xl font-description mx-auto bg-white border border-primary/20 shadow-lg rounded-lg mb-12">
         <Link href={`/confirm/${guestId}`}>
           <button className="w-full py-4 text-center text-white bg-primary hover:bg-primary/80 transition">
-            Ambil Tiket
+            Konfirmasi Kehadiran
           </button>
         </Link>
       </AnimatedDiv>
