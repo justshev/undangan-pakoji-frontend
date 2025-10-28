@@ -3,7 +3,6 @@
 
 import { useEffect, useMemo, useState } from "react";
 import useGetComments from "@/hooks/useGetComments";
-import GetTicket from "./GetTicket";
 
 type Comment = {
   id: string;
@@ -47,7 +46,9 @@ const CommentList = () => {
   }
 
   const handleLoadMore = () => {
-    setVisibleCount((prev) => Math.min(prev + LOAD_MORE_STEP, orderedComments.length));
+    setVisibleCount((prev) =>
+      Math.min(prev + LOAD_MORE_STEP, orderedComments.length)
+    );
   };
 
   return (
@@ -58,8 +59,6 @@ const CommentList = () => {
           bg-[url('/images/bg-batik.jpg')] bg-repeat bg-contain
         "
       />
-
-      <GetTicket />
 
       <div className="relative max-w-2xl mx-auto space-y-4">
         {isLoading ? (
@@ -83,8 +82,12 @@ const CommentList = () => {
                 key={comment.id}
                 className="bg-white/80 backdrop-blur-sm rounded-lg shadow p-6 text-left border border-pink-100"
               >
-                <h3 className="font-semibold text-primary mb-2">{comment.name}</h3>
-                <p className="text-gray-700 leading-relaxed">{comment.message}</p>
+                <h3 className="font-semibold text-primary mb-2">
+                  {comment.name}
+                </h3>
+                <p className="text-gray-700 leading-relaxed">
+                  {comment.message}
+                </p>
               </div>
             ))}
 
