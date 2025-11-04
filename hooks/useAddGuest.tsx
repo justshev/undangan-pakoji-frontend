@@ -34,7 +34,7 @@ const useAddGuest = () => {
     },
     onSubmit: (values: FormikValuesAddGuest) => {
       mutate(values);
-      formik.resetForm()
+      formik.resetForm();
     },
   });
 

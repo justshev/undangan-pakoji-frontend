@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { JSX } from "react";
@@ -25,6 +24,16 @@ export default function AdminPage() {
     100
   ).toFixed();
 
+  const totalUndanganAwal = safeData.reduce(
+    (acc, cur) => acc + Number(cur.totalInvited),
+    0
+  );
+
+  const totalTamuDikonfirmasi = safeData.reduce(
+    (acc, cur) => acc + cur.confirmedGuests,
+    0
+  );
+
   type InfoCardContent = {
     title: string;
     description: string;
@@ -50,6 +59,18 @@ export default function AdminPage() {
       icon: <User className="w-5 h-5 text-blue-600" />,
       description: "Terdaftar dalam sistem",
       amount: safeData.length,
+    },
+    {
+      title: "Total Undangan Awal",
+      icon: <User className="w-5 h-5 text-red-600" />,
+      description: "Terdaftar dalam sistem",
+      amount: totalUndanganAwal,
+    },
+    {
+      title: "Total Tamu Dikonfirmasi",
+      icon: <User className="w-5 h-5 text-gray-600" />,
+      description: "Terdaftar dalam sistem",
+      amount: totalTamuDikonfirmasi,
     },
   ];
 
