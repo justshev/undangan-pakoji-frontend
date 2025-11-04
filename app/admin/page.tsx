@@ -63,13 +63,13 @@ export default function AdminPage() {
     {
       title: "Total Undangan Awal",
       icon: <User className="w-5 h-5 text-red-600" />,
-      description: "Terdaftar dalam sistem",
+      description: "Undangan awal yang diberikan",
       amount: totalUndanganAwal,
     },
     {
       title: "Total Tamu Dikonfirmasi",
       icon: <User className="w-5 h-5 text-gray-600" />,
-      description: "Terdaftar dalam sistem",
+      description: "Jumlah Tamu yang dikonfirmasi",
       amount: totalTamuDikonfirmasi,
     },
   ];
