@@ -2,8 +2,6 @@
 
 import useAddGuest from "@/hooks/useAddGuest";
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "";
-
 export default function AddGuestPage() {
   const { formik, isPending } = useAddGuest();
 
