@@ -2,6 +2,13 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
   Table,
   TableBody,
   TableCell,
@@ -13,6 +20,16 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import CopyButton from "./CopyButton";
 import SearchInput from "./SearchInput";
+import useDeleteGuest from "@/hooks/useDeleteGuest";
+import useUpdateGuestName from "@/hooks/useUpdateGuestName";
+import { MoreHorizontal, Edit, Trash2 } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu";
 
 type SortDirection = "asc" | "desc";
 
@@ -95,6 +112,37 @@ const AttendanceTable = ({ data }: { data: Guest[] }) => {
   const applySortAsc = () => setNameSortDirection("asc");
   const applySortDesc = () => setNameSortDirection("desc");
 
+  const { mutate: deleteGuest } = useDeleteGuest();
+  const { mutate: updateGuest, isPending: updating } = useUpdateGuestName();
+
+  const [editDialogOpen, setEditDialogOpen] = useState(false);
+  const [editingGuestId, setEditingGuestId] = useState<string | null>(null);
+  const [editingName, setEditingName] = useState<string>("");
+
+  const openEdit = (guest: Guest) => {
+    setEditingGuestId(guest.id);
+    setEditingName(guest.name ?? "");
+    setEditDialogOpen(true);
+  };
+
+  const handleSaveEdit = () => {
+    if (!editingGuestId) return;
+    updateGuest(
+      { id: editingGuestId, name: editingName.trim() },
+      {
+        onSuccess: () => {
+          setEditDialogOpen(false);
+        },
+      }
+    );
+  };
+
+  const handleDelete = (guest: Guest) => {
+    if (confirm(`Hapus tamu "${guest.name}"?`)) {
+      deleteGuest(guest.id);
+    }
+  };
+
   return (
     <Card>
       {/* Toolbar: Search + Sort */}
@@ -135,6 +183,7 @@ const AttendanceTable = ({ data }: { data: Guest[] }) => {
               <TableHead className="font-semibold">Waktu Datang</TableHead>
               <TableHead className="font-semibold">Link Undangan</TableHead>
               <TableHead className="font-semibold">Copy Undangan</TableHead>
+              <TableHead className="font-semibold">Aksi</TableHead>
             </TableRow>
           </TableHeader>
 
@@ -194,6 +243,27 @@ const AttendanceTable = ({ data }: { data: Guest[] }) => {
                       name={guest?.name}
                     />
                   </TableCell>
+                  <TableCell>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="outline" size="icon" aria-label="More actions">
+                          <MoreHorizontal className="w-4 h-4" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuItem onClick={() => openEdit(guest)}>
+                          <Edit className="w-4 h-4 mr-2" /> Edit nama
+                        </DropdownMenuItem>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem
+                          className="text-red-600 focus:text-red-600"
+                          onClick={() => handleDelete(guest)}
+                        >
+                          <Trash2 className="w-4 h-4 mr-2" /> Hapus
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </TableCell>
                 </TableRow>
               ))
             )}
@@ -221,6 +291,30 @@ const AttendanceTable = ({ data }: { data: Guest[] }) => {
           Next
         </Button>
       </div>
+      <Dialog open={editDialogOpen} onOpenChange={setEditDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Edit Nama Tamu</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-2">
+            <label className="text-sm text-muted-foreground">Nama</label>
+            <input
+              className="w-full border rounded px-3 py-2"
+              value={editingName}
+              onChange={(e) => setEditingName(e.target.value)}
+              placeholder="Nama tamu"
+            />
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setEditDialogOpen(false)}>
+              Batal
+            </Button>
+            <Button onClick={handleSaveEdit} disabled={updating || !editingName.trim()}>
+              {updating ? "Menyimpan..." : "Simpan"}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </Card>
   );
 };
