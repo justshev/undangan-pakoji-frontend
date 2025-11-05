@@ -35,7 +35,7 @@ Kami yang berbahagia,
 Beserta Keluarga Dr. H. Erwin Budi Setiawan, S.Si., M.T & H. Toni Surizi, S.T`);
       setIsCopied(true);
       setTimeout(() => setIsCopied(false), 1200);
-    } catch (err) {
+    } catch {
       const fallbackTextarea = document.createElement("textarea");
       fallbackTextarea.value = link;
       document.body.appendChild(fallbackTextarea);

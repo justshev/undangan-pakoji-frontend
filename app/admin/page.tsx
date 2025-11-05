@@ -1,6 +1,6 @@
 "use client";
 
-import { JSX } from "react";
+import type { JSX } from "react";
 import InfoCard from "./components/InfoCard";
 import { User, UserCheck, UserX } from "lucide-react";
 import AttendanceTable from "./components/AttendanceTable";
@@ -8,11 +8,18 @@ import useGetGuests from "@/hooks/useGetGuests";
 
 export default function AdminPage() {
   const { data, isLoading } = useGetGuests();
-  const safeData = Array.isArray(data) ? data : [];
+  type Guest = {
+    id: string;
+    name: string;
+    totalInvited?: number;
+    confirmedGuests?: number;
+    isArrived?: boolean;
+    arrivalTime?: string | Date | null;
+  };
 
-  const arrivalTimeLength = safeData?.filter(
-    (item: any) => item.arrivalTime
-  ).length;
+  const safeData: Guest[] = Array.isArray(data) ? (data as Guest[]) : [];
+
+  const arrivalTimeLength = safeData.filter((item) => item.arrivalTime).length;
 
   const amountOfArrived = (
     (arrivalTimeLength / safeData.length) *
@@ -25,12 +32,12 @@ export default function AdminPage() {
   ).toFixed();
 
   const totalUndanganAwal = safeData.reduce(
-    (acc, cur) => acc + Number(cur.totalInvited),
+    (acc, cur) => acc + Number(cur.totalInvited ?? 0),
     0
   );
 
   const totalTamuDikonfirmasi = safeData.reduce(
-    (acc, cur) => acc + cur.confirmedGuests,
+    (acc, cur) => acc + (cur.confirmedGuests ?? 0),
     0
   );
 
