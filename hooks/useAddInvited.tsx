@@ -32,6 +32,10 @@ const useAddConfirmedGuest = () => {
       confirmedGuests: "",
     },
     onSubmit: (values: ConfirmedGuestProps) => {
+      if (values.confirmedGuests === "") {
+        alert("Silakan pilih jumlah kehadiran terlebih dahulu.");
+        return;
+      }
       mutate(values);
     },
   });
